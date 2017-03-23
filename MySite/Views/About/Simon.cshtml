@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Simon";
+}
+
+<h2>Simon</h2>
+
+<a href="https://play.google.com/store/apps/details?id=com.tadaatiedye.simon">Download Simon from the Play Store</a>
+or direct download @Html.ActionLink("Simon Memory Game", "Download", new { file="Simon.apk"}) (you must have developer privileges and allow sideloading.)
+<p>This was our first assignment in Mobile Programming 4020 at APSU. The assignment included adding special features to make the game special or different. I added different textures to the buttons, an option to use either 4 buttons or 6 buttons, and a 'hints' feature. Thanks to Dr. Nicholson for the idea.</p>
+<p>
+    You can play the game the classic way, with 4 buttons, or you can use 6 buttons. The game starts over if you change midway through. Six buttons actually seems easier to me.
+</p>
+<img src="~/Images/Simon/device-10-xhdpi-flat.png" style="max-width: 200px;" />
+<img src="~/Images/Simon/device-10-xhdpi-6flat.png" style="max-width: 200px;" />
+<p>   
+<img src="~/Images/Simon/device-10-xhdpi-6metallic-hint.png" style="max-width: 200px; float: right;" />
+    If you get stuck, you can use a hint, the hint will tell you the next button in the sequence, but be careful! You only start with 3 hints! You can earn more hints the longer you go without missing.
+
+</p> 
+<p>
+    The game gets faster the longer you go. It starts off pretty slow, but by the time you get 10 in a row, it's pretty fast!
+</p>
+<p>
+    There are 3 different textures for the buttons, and 3 different sound settings. Changing themes doesn't affect game play, but you can only change these on your turn. Currently supported are plain flat buttons, raised, plastic looking buttons, and metallic buttons. The default sound selection is a bell sound, but you can change this to a classic 'beep' tone or cows 'mooing'. (The cows is really too slow for actual game play. I just thought it was funny!)
+</p>
+<div style="margin-left: auto; margin-right: auto; width: 360px">
+    <img src="~/Images/Simon/device-phone-flat4.png" style="max-height: 200px" />
+    <img src="~/Images/Simon/device-phone-raised4.png" style="max-height: 200px" />
+    <img src="~/Images/Simon/device-phone-metal4.png" style="max-height: 200px" />
+</div>
+
+<p>
+    I'd like to set up this game to accept theme packs, if there is interest, let me <a href="mailTo:thefabulouscube@tadaatiedye.com">know</a>. I'm also open to suggestion, bug fixes, and improvements.
+</p>
+<p>
+    Known bugs:
+<br />1. I'm a coder, not a designer. Some of the graphics are ugly. (Sorry)
+<br />2. During Simon's turn, rotating the device will restart the sequence. If you rotate it twice, sometimes it hangs.
+</p>

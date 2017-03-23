@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MySite.Models.CartItems>
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+<!-- PayPal stuff: Goes AFTER the form/A tag -->
+<script src="http://www.paypalobjects.com/api/checkout.js" async></script>
+
+<h2>Here's your Shopping cart!</h2>
+<table class="cart">
+    <thead>
+        <tr></tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ItemId)</th>
+            <th></th>
+            <th>@Html.DisplayNameFor(model => model.ItemName)</th>
+            <th>@Html.DisplayNameFor(model => model.ItemCost)</th>
+            <th>@Html.DisplayNameFor(model => model.ItemQty)</th>
+            <th></th><th></th>
+            <th>Sub-Total</th>
+        </tr>
+    </thead>
+        @foreach (var item in Model)
+        {
+            <tr class="line_item">
+@using (Html.BeginForm("Update", "Cart", FormMethod.Post))
+{
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemId)
+                </td>
+                <td>
+                    <img src="@item.ItemPicture" alt="@item.ItemName" style="max-width: 75px; height: auto;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.ItemCost)
+                </td>
+                <td>
+                    <input type="number" name="ItemQty" value="@item.ItemQty" />
+                </td>
+                <td>
+                    
+                    <input type="hidden" name="ItemId" value="@item.ItemId" />
+                    <input type="hidden" name="AvailQty" value="@item.AvailQty" />
+                    <input type="submit" name="Update" value="Update" />
+
+                </td>
+                
+                <td>
+
+                    <input type="submit" name="removethis" formaction="/Cart/Remove/@item.ItemId" value="Remove" />
+
+                </td>
+                
+                <td>
+                    $@Html.DisplayFor(modelItem => item.subTotal)
+                </td>
+           } </tr>
+        }
+</table>
+
+@ViewBag.Total;
+@Html.ActionLink("Continue Shopping", (string) ViewBag.returnUrl)
+@Html.ActionLink("Check out", "Checkout","Cart",  Model, null)
+

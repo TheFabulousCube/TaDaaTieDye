@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Abstract Cart";
+}
+
+<h2>Abstract Cart</h2>
+<article class="GitHub">
+    You can downlod the code for my 
+<a href="https://github.com/TheFabulousCube/Abstract-Cart-PHP-">Abstract Cart</a> on GitHub.
+</article>
+
+<p>
+    This was really fun project!  The user should never know the difference, but the background stuff works better.  It seems a lot of the things I like are never seen by the public.<br />
+    When I was designing the shopping cart for tadaatiedye.com, using the database was the obvious answer.  But I noticed a lot of sites allow a guest to save items to the cart. I wanted to do that, too!  I could have added the items to the database with a placeholder userID.  Then if they login, I'd add that userID to their profile or update it with their userID.  I took a different approach with saving the items to SESSION variables, then they could check out as a guest.
+</p>
+<p>
+    I decided that I needed two kinds of shopping carts, one with SESSION varibles, one that used the database.  I could have written them directly; I decided to use an abstract class because:
+</p>
+    <ul>
+        <li>Abstract classes preserve the integrity/functionality of all derived classes</li>
+        <li>Abstract classes provide scalability and stability</li>
+        <li>Abstract classes are <strong>FUN</strong></li>
+    </ul>
+<p>
+    Since this was also my model class for the shopping cart, I used the abstract class <code>Cart</code> to define the fields or attributes and methods (actions) needed for <strong>every</strong> cart.
+</p><code>
+
+<ul>
+    <li>public $cart;</li>
+	<li>public $message;</li>
+	<li>public $cartTotal;</li>
+	<li>public $itemCount; </li>
+	<li>abstract function addtocart($itemID, $qty);</li>	
+	<li>abstract function updatecart($itemID, $qty);</li>
+	<li>abstract function removefromcart($item);</li>
+	<li>abstract function emptycart();</li>	
+	<li>abstract function gettotal();</li>	
+	<li>abstract function getcart();</li>
+    <li>private function adjustQtyToInventory($itemID, $qty)</li>
+</ul></code>
+<p> 
+    Since I needed all of the fields for the View, they needed to be public.  I noticed that it really didn't matter what kind of cart you have to adjust the quantity ordered to available inventory.  This is defined in the abstract class.  In PHP, all methods of parent class are available to the derived classes.
+</p>
+<p>
+    With this framework in place, I could work with the UI/View and controller to see <strong>what</strong> I needed without worrying <strong>how</strong> it needed to be done. (This is the 'wild and free' part of abstract classes!)
+</p>
+<p>
+    Next, the derived classes (<code>sessionCart</code> and <code>dbCart</code>) had to figure out how to implement the functions defined in the <code>ShoppingCart</code> class.
+</p>

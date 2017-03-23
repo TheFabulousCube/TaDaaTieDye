@@ -1,0 +1,14 @@
+﻿@model MySite.Models.Cart
+@{
+    ViewBag.Title = "AddToCart";
+}
+
+<h2>AddToCart</h2>
+Here's the Add to cart page.
+@Html.DisplayNameFor(model => model.UserId);
+@Html.DisplayNameFor(model => model.ProdID);
+@Html.DisplayNameFor(model => model.Qty);
+<br />
+@Html.DisplayFor(model => model.UserId);
+@Html.DisplayFor(model => model.ProdID);
+@Html.DisplayFor(model => model.Qty);

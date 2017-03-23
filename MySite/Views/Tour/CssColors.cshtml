@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Rotating Color Scheme";
+}
+
+<h2>Rotating Color Scheme</h2>
+<article class="GitHub">
+    You can downlod the code for my 
+<a href="https://github.com/TheFabulousCube/Rotating-Color-Scheme">Rotating Color Scheme</a> on GitHub.
+</article>
+
+
+
+<p>
+     I'm not really sure when or how I came up with this idea.  I know it was during a Javascript section of a Web Programming class I was taking.  I'm not sure if the idea to change the CSS was an assignment, or if it just seemed fun to me.  A lot of my ideas come from wondering if I <strong>can</strong> do something.  This is one I took <strong>way</strong> overboard.  Originally, there were only 3-4 color schemes for morning, afternoon, evening, and a 'Neon' scheme for night.  The colors were individually selected; there's only 4 of them, right?  I wanted to push the color changes to every 2-3 hours, so I needed 8-12 different .css files and color schemes.  I'm not much of a designer, and designing 8 to 12 different color schemes really got in the way of actually programming the rotation.  Once I automated the task, I decided to go full out for 24 .css files and change every hour (on the hour).  This is how I automated the process.
+</p>
+<aside style="width: 100%; height: 7em;">
+        @{
+            var jsFile = Server.MapPath("~/Downloads/timeOfDayStyleSheet.js");
+            Array jsLines = File.ReadAllLines(jsFile);
+            foreach (string line in jsLines)
+            {
+            @line <br />   
+    }
+        }
+</aside>
+<p>
+        I usually start at <a href="http://paletton.com">Paletton</a> for color designs.  This is great free site that allows you to design a color palette and export the code in several formats.  <br />
+    I'm a monochrome kind of guy, so I started with Adjacent colors.  I spread the angle from primary to 45&deg; for some diversity, and added a complementary color for highlights and contrast.  Once I had a <strong>pattern</strong> I was satisfied with, I set the primary color to 0/360&deg; on the color wheel and exported the color palette.  Rotating the primary 15&deg; and exporting all the way around gave me 24 color palettes.  And a big huge .txt file full of numbers.
+</p>
+<p>
+        Next, I came up with a standard template for the color schemes using placeholders for the color codes.  Pulling a bunch of numbers out of one file and inserting them into another, then spit out 24 files sounded like Java to me!  Here it is:
+</p>
+    <aside style="width: 30%;">
+        @{
+            var tempFile = Server.MapPath("~/Downloads/color_template.css");
+            Array tempLines = File.ReadAllLines(tempFile);
+            foreach (string line in tempLines)
+            {
+            @line <br />   
+    }
+        }
+    </aside>
+  
+    <aside style="width: 30%;">
+        @{
+            var builderFile = Server.MapPath("~/Downloads/colorbuilder.java");
+            Array builderLines = File.ReadAllLines(builderFile);
+            foreach (string line in builderLines)
+            {
+            @line <br />   
+    }
+        }
+    </aside>
+  
+    <aside style="width: 30%;">
+        @{
+            var scriptFile = Server.MapPath("~/Downloads/ScriptBuilder.java");
+            Array scriptLines = File.ReadAllLines(scriptFile);
+            foreach (string line in scriptLines)
+            {
+            @line <br />   
+    }
+        }
+    </aside>
+<p>Since I had 24 files named almost the exact same thing, and I still had JGrasp open, I figured another Java program wouldn't hurt.  So I wrote one to write the javascript file for me</p>
+<p>The ScriptBuiler.java file allows me to adjust the times and direction around the coor wheel.  For example,  some of the more yellow colors were too bright, so I moved them to 3:00am-4:00am where they won't be noticed as much.  But this put the blue/teal/green colors at midnight, and I felt they fit morning better.  By going the other direction around the color wheel, I could push them to 9:00am.  (I just got lucky they worked out this way.  Picking a color palette by mathmatical principle is <strong>NOT</strong> good design.)</p>
+<p>This project is available for download at <a href="https://github.com/TheFabulousCube/Rotating-Color-Scheme">GitHub.</a>  The project was fun because of the programming.  It was also interesting to notice the color changes as I was working on the site.  Me: "Oops! The colors changed, there goes another hour!"</p>

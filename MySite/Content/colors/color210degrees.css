@@ -1,0 +1,150 @@
+/* Marquardt Snell 		 */
+/* www.tadaatiedye.com   */
+/* color###degrees.css          */
+/* where ### = the number of degrees
+	as Hue on the color wheel.*/
+ 
+
+/* from Paletton.com */
+/* export for .LESS / .css */
+/* Adjacent colors, Hue = ###, dist 45 w/complimentary */
+
+
+body
+{
+	color: rgba(0,0,0,0.5);
+	/* background: primary-1 */	
+	background: #46B2B2;	
+	/* Section title, section heads secondary-1-4 */
+
+}
+header
+{
+	/* background: primary-2 */
+	background: #249F9F;
+}
+
+#sidebar
+{
+	/* color: secondary-1-4 */
+	color: #0C0C6C;
+	/* background: secondary-1-0 */
+	background: #1B1BB3;
+	/* border: secondary-1-3 */
+	border-color: #13138A;
+}
+
+#sidebar a:link
+{
+	/* color: secondary-1-4 */
+	color: #0C0C6C;
+	/* background: secondary-1-0 */
+	background: #1B1BB3;
+}
+
+#sidebar a:hover 
+{
+	/* color: secondary-1-0 */
+	color: #1B1BB3;
+	/* background: secondary-1-4 */
+	background: #0C0C6C;
+}
+
+span 
+{
+	/* background secondary-1-2 */
+	background: #3E3EB7;
+}
+
+
+#topmenu ul
+{
+	/* color: secondary-1-4 */
+	color: #0C0C6C;
+	/* background: secondary-1-1 */
+	background: #5F5FC6;
+}
+
+#topmenu a:hover 
+{
+	/* color: secondary-1-1 */
+	color: #5F5FC6;
+	/* background: secondary-1-4 */
+	background: #0C0C6C;
+}
+footer
+{
+	/* color: secondary-2-4 */
+	color: #3E8A00;
+	/* background: secondary-2-1 */	
+	background: #9CEA5B; 
+	/* border: secondary-2-3 */
+	border-color: #4FAF00;
+}
+	
+p:first-letter
+{
+	/* color: primary-4 */
+	color: #005D5D;
+}
+
+a:link
+{
+	/* color: primary-4 */
+	color: #005D5D;
+	/* background: transparent */
+	background: rgba(0,0,0,0);
+}
+
+a:visited
+{
+	/* color: primary-3 */
+	color: #007676;
+}
+
+a:hover
+{
+	/* color: complement-1 */
+	color: #FFAA63;
+	/* background: complement-3  */
+	background: #C55900;
+}
+
+a:active
+{
+	color: black;	
+}
+
+&.current 
+{  /* class to disable the link to the current page */
+	/* color: secondary-1-0 */
+	color: #1B1BB3;
+	/* background: secondary-1-3 */
+	background: #13138A;
+}
+
+
+h1
+{
+	/* color: primary-3 */
+	color: #007676;
+}
+
+h2
+{
+	/* color: primary-0 */
+	color: #009999;
+}
+
+td#light
+{
+	/* Background-color: comlpement-1 */
+	background-color: #FFAA63;
+}
+
+td#dark
+{
+	/* Background-color: comlpement-2 */
+	background-color: #FF9339;
+}
+

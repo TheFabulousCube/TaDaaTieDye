@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Marquardt 'Cube' Snell -->
+<!-- www.tadaatiedye.com -->
+    <head>
+        <meta charset="utf-8" />
+        <title>TaDaa Tie Dye - @ViewBag.Title</title>
+
+        <!-- Sets the favicon image for the appropriate browser -->
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	        <!-- for FF, Chrome, Opera -->
+        <link rel="icon" type="image/png" href="~/Images/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="~/Images/favicon-32x32.png" sizes="32x32">
+                    <!-- for IE -->
+        <link rel="icon" type="image/x-icon" href="http://tadaatiedye.com/favicon.ico" >
+        <link rel="shortcut icon" type="image/x-icon" href="http://tadaatiedye.com/favicon.ico"/>
+        <!-- end favicon.php -->
+
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @RenderSection("scripts", required: false)
+        <!--        <link href="~/Content/main.css" rel="stylesheet" type="text/css">                               -->
+        <!-- Time of day stylesheet -->
+        <script src="~/Scripts/timeOfDayStyleSheet.js"></script>
+        <script>
+            $(function (menu) {
+                $(".flyOutMenu").accordion({
+                    event: "mouseover",
+                    collapsible: true,
+                    active: false,
+                    animate: 500,
+                    animate: "swing",
+                    heightStyle: "content",
+                    autoHeight: false
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <header>
+            <img alt="Tadaa Tie Dye" src="~/images/logo.png" />
+            <hr />
+            <script id="TOD" src="~/scripts/writeTimeAndDate.js"></script>           
+<br /> You are on the MVC site.  This site is also available in <a href="http://php.tadaatiedye.com">PHP</a>
+            <!-- Login/Logout button -->
+            @Html.Partial("_LoginPartial")
+        </header>
+        <div id="body">
+            @Html.Partial("_Sidebar")
+            @Html.Partial("_TopMenu")
+
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @if (TempData["UserMessage"] != null)
+                {
+                    @TempData["UserMessage"]
+                }
+                @ViewBag.Message
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            @Html.Partial("_Footer")
+        </footer>
+
+
+    </body>
+</html>

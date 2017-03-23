@@ -1,0 +1,80 @@
+﻿
+@{
+int current = ViewBag.current;
+int perpage = ViewBag.perpage;
+int total = ViewBag.total;
+string sender = ViewBag.sender;
+string catagory = ViewBag.catagory;
+string size = ViewBag.size;
+
+const int NUMBERSTODISPLAY = 5;
+int adjPageNumbers = NUMBERSTODISPLAY;
+int LowerBound = ((current - (adjPageNumbers / 2 * perpage)) / perpage);
+int UpperBound = ((current + (((adjPageNumbers / 2) + 1) * perpage)) / perpage);
+List<int> perpageList = new List<int>();
+for (int i = 5; i <= total / 2; i = i + 5) {perpageList.Add(i);}
+    
+
+// int pageCount = (records - 1) / recordsPerPage + 1;
+adjPageNumbers = (NUMBERSTODISPLAY < ((total - 1) / perpage) + 1) ? NUMBERSTODISPLAY : (((total - 1) / perpage) + 1);
+while ((current % perpage != 0) && (current >= 0))
+{
+    --current;   
+}
+
+if (LowerBound < 0)
+{
+    LowerBound = 0;
+    UpperBound = LowerBound + adjPageNumbers;
+}
+if (UpperBound > (((total - 1) / perpage) + 1))
+{
+    UpperBound = (((total - 1) / perpage) + 1);
+    LowerBound = UpperBound - adjPageNumbers;   
+}
+}
+
+<ul class="pager">
+@{
+    if (total > perpage)  // if there's not enough items to page, don't show the PageNav
+    {
+    if (current >= perpage && perpage * adjPageNumbers < total)
+                    {
+                        <li>@Html.ActionLink("<< ", "Index", new { current = 0, perpage = perpage, catagory = catagory, size = size }) </li>
+                    }
+                    else
+                    {
+                        <li>  </li>  
+                    }
+            // BE VERY carefull!!! The page numbers are array-style, they are 0-9, the display must be 1-10
+            for (int page = LowerBound; page < (UpperBound); page++)
+            {
+                if (total-((page)*perpage)>0 && !(current==(page)*perpage)) 
+                    {
+                          <li>@Html.ActionLink((page + 1).ToString(), sender, new { current = page * perpage, perpage = perpage, catagory = catagory, size = size  }) </li>
+                    }
+                    else
+                    {
+                         <li>@(page + 1)</li>   
+                    }
+            }
+            if (current < total - perpage && perpage * adjPageNumbers < total)
+                {
+                    <li>@Html.ActionLink(">> ", "Index", new { current = total-perpage, perpage = perpage, catagory = catagory, size = size  }) </li>
+                }
+                else
+                {
+                    <li>  </li>  
+                }
+    }
+}    
+<li style="white-space: nowrap;">
+
+@using (Html.BeginForm())
+{ <text># per page: </text>
+@Html.DropDownList("perpage", new SelectList(perpageList, perpage), new { onchange = "this.form.submit();" })
+}
+</li>
+
+</ul>
+

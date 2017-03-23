@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MySite.Models.Clothing>
+
+@{
+    ViewBag.Title = "Clothing - Browse";
+}
+
+<h2>Tie Dyed Stuff!</h2>
+
+<p>
+    @Html.Partial("_PageNavPartial")
+</p>
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdPicture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BackPicture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Catagory_Lookup.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size_Lookup.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sleeve_Lookup.Sleeve_Length)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdId)
+        </td>
+        <td>
+            <img src="@item.ProdPicture" alt="@item.Size_Lookup.Size, @item.Catagory_Lookup.Type Front" style="max-width: 75px; height: auto;" />
+        </td>
+        <td>
+            <img src="@item.BackPicture" alt="@item.Size_Lookup.Size, @item.Catagory_Lookup.Type Back" style="max-width: 75px; height: auto;" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Catagory_Lookup.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size_Lookup.Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sleeve_Lookup.Sleeve_Length)
+        </td>
+        <td>
+            @Html.ActionLink("Add To Cart", "AddToCart", "Cart", new { id=item.ProdId, qty=1, returnUrl = "~/Clothing/Browse" }, null)
+            @Html.ActionLink("Details", "Details", new { id=item.ProdId, returnUrl = "/Browse"  })
+@*            | @Html.ActionLink("Edit", "Edit", new { id=item.ProdId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProdId })*@
+        </td>
+    </tr>
+}
+
+</table>

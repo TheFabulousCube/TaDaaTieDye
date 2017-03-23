@@ -1,0 +1,66 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "OBD_Graph";
+}
+
+<h2>Graphing program for ODB-II Code Reader</h2>
+<article class="GitHub">
+    You can downlod the code for my 
+<a href="https://github.com/TheFabulousCube/OBD-II-Graph">OBD-II Graph</a> on GitHub.
+</article>
+<p>I don't have an expensive, self-graphing code reader.  This works just fine for the cheap Harbor Freight one.  When it stores the data, it saves it in a <strong>huge</strong> long list of text values. I had trouble reading the data like that, so I wrote a short C# program to read in the data, parse it, and display the data on a graph as information.  this way I could see the changes and how the sensors interact over the specified time period. </p>
+<h2>Things I liked About This Project:</h2>
+<p>It did amost exactly what I wanted it to.  It took a long list of data and displayed it as information in a readable form.</p>
+<p></p>
+<h2>Things I Didn't Like (Or Would Have Done Differently):</h2>
+<p>Depending on the sensors you poll, the graph can get very crowded.  I let you use checkboxes to filter out some of the noise, but I forgot to resize the coordinate plane so that you can zoom in better.  My neighbor is a mechanic, and he liked to graph, but when I asked him about the readings, he looked at the long list of data.  If you're used to seeing the data listed like that, I guess you know what you're looking at.  Professional mechanics may not find this useful, but I did.</p>
+<aside>
+@{
+    var dataFile = Server.MapPath("~/Downloads/test21_all.dat");
+    Array fileLines = File.ReadAllLines(dataFile);
+    foreach(string line in fileLines)
+    {
+     @line <br />   
+    }
+}
+
+</aside>
+<h2>What You Need:</h2>
+
+    <ul>
+        <li>Windows Driver for <strong>your</strong> code reader.  Mine came with one.</li>
+        <li>@Html.ActionLink("My graphing program", "Download", new { file="Code_Scanner_Graph.zip"}) (Save, unzip, and install)</li>
+        <li>A USB capable ODB-II code reader</li>
+        <li>I've included some test data files</li>
+    </ul>
+<p></p>
+<ul>
+@foreach (var item in Model)
+{    
+    <li>@Html.ActionLink(@item.ToString(), "Download", new { file=@item.ToString()})</li>
+}
+</ul>
+<h2>How It Works:</h2>
+(Assuming you actually want to troubleshoot your vehicle)
+    <ol>
+        <li>Connect your reader to your vehicle</li>
+        <li>Select 'Store Data' or something similar on the code reader</li>
+        <li>Select the sensors you want to poll, mine read longer if I selected less sensors</li>
+        <figure>
+            <img src="~/Images/OBD_2/less_sensors.PNG" />
+            <figcaption>Time (in seconds) is shown along the 'X' axis.</figcaption>
+        </figure>
+
+        <li>Once you have the data stored, disconnect the reader from the vehicle and connect it to your computer</li>
+        <li>Using the driver software, download the data file to your computer, mine stored as *.dat files</li>
+        <li>If you just want to test out the program, you can use some test files I have</li>
+        <li>Open the graphing program and OPEN your stored .dat file</li>
+        <li>IMPORT the selected file, the selected file will be displayed below</li>
+        <li>SHOW GRAPH will draw the graph for you</li>
+        <img src="~/Images/OBD_2/workflow.PNG" />
+        <li>You can check/uncheck the sensors so you can focus on just the readings you want to see</li>
+    </ol>
+<img src="~/Images/OBD_2/Overview.PNG" />
+<img src="~/Images/OBD_2/partial.PNG" />
+
+

@@ -1,0 +1,976 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0C419DF8-7250-4E2C-851A-22227A2F9C15}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MySite</RootNamespace>
+    <AssemblyName>MySite</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="TaDaaTieDyeTPCEntities-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="server=50.62.209.186%3buser id=pipsplay%3bpassword=Belle09%40Home%3bpersistsecurityinfo=True%3bdatabase=TaDaaTieDyeTPC" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\TaDaaTieDyeTPCEntities-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.0\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ICart.cs" />
+    <Compile Include="Controllers\TourController.cs" />
+    <Compile Include="Helpers\MyHtmlHelpers.cs" />
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ClothingController.cs" />
+    <Compile Include="Controllers\DIYController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MagnetsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Clean.cs" />
+    <Compile Include="Helpers\ExcludeChar.cs" />
+    <Compile Include="Helpers\SHA1.cs" />
+    <Compile Include="Helpers\StripHtmlTags.cs" />
+    <Compile Include="Models\Cart.cs">
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CartItems.cs" />
+    <Compile Include="Models\Catagory_Lookup.cs">
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Clothing.cs">
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Download.cs">
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Magnets.cs">
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Metadata.cs" />
+    <Compile Include="Models\PartialClasses.cs" />
+    <Compile Include="Models\Role_Lookup.cs">
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Size_Lookup.cs">
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sleeve_Lookup.cs">
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TadaaTieDyeEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TadaaTieDyeEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TadaaTieDyeEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TadaaTieDyeEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TadaaTieDyeEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.cs">
+      <DependentUpon>TadaaTieDyeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\colors\color000degrees.css" />
+    <Content Include="Content\colors\color015degrees.css" />
+    <Content Include="Content\colors\color030degrees.css" />
+    <Content Include="Content\colors\color045degrees.css" />
+    <Content Include="Content\colors\color060degrees.css" />
+    <Content Include="Content\colors\color075degrees.css" />
+    <Content Include="Content\colors\color090degrees.css" />
+    <Content Include="Content\colors\color105degrees.css" />
+    <Content Include="Content\colors\color120degrees.css" />
+    <Content Include="Content\colors\color135degrees.css" />
+    <Content Include="Content\colors\color150degrees.css" />
+    <Content Include="Content\colors\color165degrees.css" />
+    <Content Include="Content\colors\color180degrees.css" />
+    <Content Include="Content\colors\color195degrees.css" />
+    <Content Include="Content\colors\color210degrees.css" />
+    <Content Include="Content\colors\color225degrees.css" />
+    <Content Include="Content\colors\color240degrees.css" />
+    <Content Include="Content\colors\color255degrees.css" />
+    <Content Include="Content\colors\color270degrees.css" />
+    <Content Include="Content\colors\color285degrees.css" />
+    <Content Include="Content\colors\color300degrees.css" />
+    <Content Include="Content\colors\color315degrees.css" />
+    <Content Include="Content\colors\color330degrees.css" />
+    <Content Include="Content\colors\color345degrees.css" />
+    <Content Include="Content\colors\color360degrees.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Downloads\cart_model.php" />
+    <Content Include="Downloads\colorbuilder.java" />
+    <Content Include="Downloads\color_template.css" />
+    <Content Include="Downloads\FileCleaner.java" />
+    <Content Include="Downloads\pagenav.js" />
+    <Content Include="Downloads\puzzlecubes_2.3.jar" />
+    <Content Include="Downloads\ScriptBuilder.java" />
+    <Content Include="Downloads\timeOfDayStyleSheet.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <EntityDeploy Include="Models\TadaaTieDyeEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TadaaTieDyeEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Helpers\jxzvuaic.bmp" />
+    <Content Include="Images\adultts\6036.jpg" />
+    <Content Include="Images\adultts\6037.JPG" />
+    <Content Include="Images\adultts\6038.JPG" />
+    <Content Include="Images\adultts\6201.jpg" />
+    <Content Include="Images\adultts\6202.jpg" />
+    <Content Include="Images\adultts\6203.jpg" />
+    <Content Include="Images\adultts\6204.jpg" />
+    <Content Include="Images\adultts\6205.jpg" />
+    <Content Include="Images\adultts\6206.jpg" />
+    <Content Include="Images\adultts\6207.jpg" />
+    <Content Include="Images\adultts\6208.jpg" />
+    <Content Include="Images\adultts\6209.jpg" />
+    <Content Include="Images\adultts\6210.jpg" />
+    <Content Include="Images\adultts\6211.jpg" />
+    <Content Include="Images\adultts\6212.jpg" />
+    <Content Include="Images\adultts\6213.jpg" />
+    <Content Include="Images\adultts\6214.jpg" />
+    <Content Include="Images\adultts\6215.jpg" />
+    <Content Include="Images\adultts\6216.jpg" />
+    <Content Include="Images\adultts\6217.jpg" />
+    <Content Include="Images\adultts\6218.jpg" />
+    <Content Include="Images\adultts\6219.jpg" />
+    <Content Include="Images\adultts\6220.jpg" />
+    <Content Include="Images\adultts\6221.jpg" />
+    <Content Include="Images\adultts\6222.jpg" />
+    <Content Include="Images\adultts\6251.jpg" />
+    <Content Include="Images\adultts\6252.jpg" />
+    <Content Include="Images\adultts\6401.JPG" />
+    <Content Include="Images\adultts\6402.JPG" />
+    <Content Include="Images\adultts\6405.JPG" />
+    <Content Include="Images\adultts\6406.JPG" />
+    <Content Include="Images\adultts\6601.JPG" />
+    <Content Include="Images\adultts\6602.JPG" />
+    <Content Include="Images\adultts\6603.JPG" />
+    <Content Include="Images\adultts\6604.JPG" />
+    <Content Include="Images\adultts\6605.JPG" />
+    <Content Include="Images\adultts\6606.JPG" />
+    <Content Include="Images\adultts\6801.JPG" />
+    <Content Include="Images\adultts\6802.JPG" />
+    <Content Include="Images\adultts\6803.JPG" />
+    <Content Include="Images\adultts\6804.JPG" />
+    <Content Include="Images\camisole\9148.JPG" />
+    <Content Include="Images\camisole\9149.JPG" />
+    <Content Include="Images\camisole\9160.JPG" />
+    <Content Include="Images\camisole\9161.JPG" />
+    <Content Include="Images\Cute Website Dolphin.png" />
+    <Content Include="Images\favicon-16x16.png" />
+    <Content Include="Images\favicon-32x32.png" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\giraffes.jpg" />
+    <Content Include="Images\kidsts\2001.JPG" />
+    <Content Include="Images\kidsts\2002.JPG" />
+    <Content Include="Images\kidsts\2003.JPG" />
+    <Content Include="Images\kidsts\2004.JPG" />
+    <Content Include="Images\kidsts\2005.JPG" />
+    <Content Include="Images\kidsts\2006.JPG" />
+    <Content Include="Images\kidsts\2007.JPG" />
+    <Content Include="Images\kidsts\2008.JPG" />
+    <Content Include="Images\kidsts\2101.jpg" />
+    <Content Include="Images\kidsts\2101w.jpg" />
+    <Content Include="Images\kidsts\2102.jpg" />
+    <Content Include="Images\kidsts\2102w.jpg" />
+    <Content Include="Images\kidsts\2103.jpg" />
+    <Content Include="Images\kidsts\2103w.jpg" />
+    <Content Include="Images\kidsts\2104.jpg" />
+    <Content Include="Images\kidsts\2104w.jpg" />
+    <Content Include="Images\kidsts\2105.jpg" />
+    <Content Include="Images\kidsts\2105w.jpg" />
+    <Content Include="Images\kidsts\2106.jpg" />
+    <Content Include="Images\kidsts\2106w.jpg" />
+    <Content Include="Images\kidsts\2107.jpg" />
+    <Content Include="Images\kidsts\2108.jpg" />
+    <Content Include="Images\kidsts\2109.jpg" />
+    <Content Include="Images\kidsts\2110.jpg" />
+    <Content Include="Images\kidsts\2201.jpg" />
+    <Content Include="Images\kidsts\2202.jpg" />
+    <Content Include="Images\kidsts\2203.jpg" />
+    <Content Include="Images\kidsts\2204.jpg" />
+    <Content Include="Images\kidsts\2205.jpg" />
+    <Content Include="Images\kidsts\2206.jpg" />
+    <Content Include="Images\kidsts\2207.JPG" />
+    <Content Include="Images\kidsts\2208.JPG" />
+    <Content Include="Images\kidsts\2209.JPG" />
+    <Content Include="Images\kidsts\2210.JPG" />
+    <Content Include="Images\kidsts\2211.JPG" />
+    <Content Include="Images\kidsts\2212.JPG" />
+    <Content Include="Images\kidsts\2401.jpg" />
+    <Content Include="Images\kidsts\2402.jpg" />
+    <Content Include="Images\kidsts\2403.JPG" />
+    <Content Include="Images\kidsts\2404.JPG" />
+    <Content Include="Images\kidsts\2405.jpg" />
+    <Content Include="Images\kidsts\2406.jpg" />
+    <Content Include="Images\kidsts\2407.JPG" />
+    <Content Include="Images\kidsts\2408.JPG" />
+    <Content Include="Images\kidsts\2409.JPG" />
+    <Content Include="Images\kidsts\2410.JPG" />
+    <Content Include="Images\kidsts\2411.JPG" />
+    <Content Include="Images\kidsts\2412.JPG" />
+    <Content Include="Images\kidsts\2413.JPG" />
+    <Content Include="Images\kidsts\2414.JPG" />
+    <Content Include="Images\kidsts\2601.jpg" />
+    <Content Include="Images\kidsts\2602.jpg" />
+    <Content Include="Images\kidsts\2603.jpg" />
+    <Content Include="Images\kidsts\2604.jpg" />
+    <Content Include="Images\kidsts\2605.JPG" />
+    <Content Include="Images\kidsts\2606.JPG" />
+    <Content Include="Images\kidsts\2607.JPG" />
+    <Content Include="Images\kidsts\2608.JPG" />
+    <Content Include="Images\kidsts\2609.JPG" />
+    <Content Include="Images\kidsts\2610.JPG" />
+    <Content Include="Images\kidsts\2801.JPG" />
+    <Content Include="Images\kidsts\2802.JPG" />
+    <Content Include="Images\kidsts\2803.JPG" />
+    <Content Include="Images\kidsts\2804.JPG" />
+    <Content Include="Images\kidsts\2805.JPG" />
+    <Content Include="Images\kidsts\2806.JPG" />
+    <Content Include="Images\kidsts\2807.JPG" />
+    <Content Include="Images\kidsts\2808.JPG" />
+    <Content Include="Images\kidsts\2809.JPG" />
+    <Content Include="Images\kidsts\2810.JPG" />
+    <Content Include="Images\kidsts\2811.JPG" />
+    <Content Include="Images\kidsts\2812.JPG" />
+    <Content Include="Images\kidsts\9401.JPG" />
+    <Content Include="Images\kidsts\camisole\9148.JPG" />
+    <Content Include="Images\kidsts\camisole\9149.JPG" />
+    <Content Include="Images\kidsts\camisole\9160.JPG" />
+    <Content Include="Images\kidsts\camisole\9161.JPG" />
+    <Content Include="Images\kidsts\dresses\9201.JPG" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\magnets\AK.jpg" />
+    <Content Include="Images\magnets\AL.jpg" />
+    <Content Include="Images\magnets\allstates.gif" />
+    <Content Include="Images\magnets\AR.jpg" />
+    <Content Include="Images\magnets\AZ.jpg" />
+    <Content Include="Images\magnets\CA.jpg" />
+    <Content Include="Images\magnets\CO.jpg" />
+    <Content Include="Images\magnets\CT.jpg" />
+    <Content Include="Images\magnets\CTdk.jpg" />
+    <Content Include="Images\magnets\CTlt.jpg" />
+    <Content Include="Images\magnets\DE.jpg" />
+    <Content Include="Images\magnets\FL.jpg" />
+    <Content Include="Images\magnets\GA.jpg" />
+    <Content Include="Images\magnets\HI.jpg" />
+    <Content Include="Images\magnets\IA.jpg" />
+    <Content Include="Images\magnets\ID.jpg" />
+    <Content Include="Images\magnets\IDbrown.jpg" />
+    <Content Include="Images\magnets\IDtan.jpg" />
+    <Content Include="Images\magnets\IL.jpg" />
+    <Content Include="Images\magnets\IN.jpg" />
+    <Content Include="Images\magnets\KS.jpg" />
+    <Content Include="Images\magnets\LA.jpg" />
+    <Content Include="Images\magnets\MA.jpg" />
+    <Content Include="Images\magnets\MD.jpg" />
+    <Content Include="Images\magnets\ME.jpg" />
+    <Content Include="Images\magnets\MI.jpg" />
+    <Content Include="Images\magnets\MIblue.jpg" />
+    <Content Include="Images\magnets\MIorange.jpg" />
+    <Content Include="Images\magnets\MN.jpg" />
+    <Content Include="Images\magnets\MO.jpg" />
+    <Content Include="Images\magnets\MS.jpg" />
+    <Content Include="Images\magnets\MSwhite.jpg" />
+    <Content Include="Images\magnets\MSyellow.jpg" />
+    <Content Include="Images\magnets\MT.jpg" />
+    <Content Include="Images\magnets\NB.jpg" />
+    <Content Include="Images\magnets\ND.jpg" />
+    <Content Include="Images\magnets\NH.jpg" />
+    <Content Include="Images\magnets\NJ.jpg" />
+    <Content Include="Images\magnets\NJblue.jpg" />
+    <Content Include="Images\magnets\NJyellow.jpg" />
+    <Content Include="Images\magnets\NM.jpg" />
+    <Content Include="Images\magnets\NV.jpg" />
+    <Content Include="Images\magnets\NY.jpg" />
+    <Content Include="Images\magnets\NYapple.jpg" />
+    <Content Include="Images\magnets\NYempire.jpg" />
+    <Content Include="Images\magnets\OH.jpg" />
+    <Content Include="Images\magnets\OK.jpg" />
+    <Content Include="Images\magnets\OR.jpg" />
+    <Content Include="Images\magnets\PA.jpg" />
+    <Content Include="Images\magnets\RI.jpg" />
+    <Content Include="Images\magnets\RIdk.jpg" />
+    <Content Include="Images\magnets\RIlt.jpg" />
+    <Content Include="Images\magnets\SC.jpg" />
+    <Content Include="Images\magnets\SD.jpg" />
+    <Content Include="Images\magnets\ss\ak.jpg" />
+    <Content Include="Images\magnets\ss\al.jpg" />
+    <Content Include="Images\magnets\ss\ar.jpg" />
+    <Content Include="Images\magnets\ss\az.jpg" />
+    <Content Include="Images\magnets\ss\ca.jpg" />
+    <Content Include="Images\magnets\ss\co.jpg" />
+    <Content Include="Images\magnets\ss\ct.jpg" />
+    <Content Include="Images\magnets\ss\dc.jpg" />
+    <Content Include="Images\magnets\ss\de.jpg" />
+    <Content Include="Images\magnets\ss\fl.jpg" />
+    <Content Include="Images\magnets\ss\ga.jpg" />
+    <Content Include="Images\magnets\ss\hi.jpg" />
+    <Content Include="Images\magnets\ss\ia.jpg" />
+    <Content Include="Images\magnets\ss\id.jpg" />
+    <Content Include="Images\magnets\ss\il.jpg" />
+    <Content Include="Images\magnets\ss\in.jpg" />
+    <Content Include="Images\magnets\ss\ks.jpg" />
+    <Content Include="Images\magnets\ss\ky.jpg" />
+    <Content Include="Images\magnets\ss\la.jpg" />
+    <Content Include="Images\magnets\ss\ma.jpg" />
+    <Content Include="Images\magnets\ss\md.jpg" />
+    <Content Include="Images\magnets\ss\me.jpg" />
+    <Content Include="Images\magnets\ss\mi.jpg" />
+    <Content Include="Images\magnets\ss\mn.jpg" />
+    <Content Include="Images\magnets\ss\mo.jpg" />
+    <Content Include="Images\magnets\ss\ms.jpg" />
+    <Content Include="Images\magnets\ss\mt.jpg" />
+    <Content Include="Images\magnets\ss\nb.jpg" />
+    <Content Include="Images\magnets\ss\nc.jpg" />
+    <Content Include="Images\magnets\ss\nd.jpg" />
+    <Content Include="Images\magnets\ss\nh.jpg" />
+    <Content Include="Images\magnets\ss\nj.jpg" />
+    <Content Include="Images\magnets\ss\nm.jpg" />
+    <Content Include="Images\magnets\ss\nv.jpg" />
+    <Content Include="Images\magnets\ss\ny.jpg" />
+    <Content Include="Images\magnets\ss\oh.jpg" />
+    <Content Include="Images\magnets\ss\ok.jpg" />
+    <Content Include="Images\magnets\ss\or.jpg" />
+    <Content Include="Images\magnets\ss\pa.jpg" />
+    <Content Include="Images\magnets\ss\ri.jpg" />
+    <Content Include="Images\magnets\ss\ri2.jpg" />
+    <Content Include="Images\magnets\ss\sc.jpg" />
+    <Content Include="Images\magnets\ss\sd.jpg" />
+    <Content Include="Images\magnets\ss\text.gif" />
+    <Content Include="Images\magnets\ss\tn.jpg" />
+    <Content Include="Images\magnets\ss\tx.jpg" />
+    <Content Include="Images\magnets\ss\usa.jpg" />
+    <Content Include="Images\magnets\ss\ut.jpg" />
+    <Content Include="Images\magnets\ss\va.jpg" />
+    <Content Include="Images\magnets\ss\vt.jpg" />
+    <Content Include="Images\magnets\ss\wa.jpg" />
+    <Content Include="Images\magnets\ss\wa2.jpg" />
+    <Content Include="Images\magnets\ss\wi.jpg" />
+    <Content Include="Images\magnets\ss\wv.jpg" />
+    <Content Include="Images\magnets\ss\wy.jpg" />
+    <Content Include="Images\magnets\tn.jpg" />
+    <Content Include="Images\magnets\TX.jpg" />
+    <Content Include="Images\magnets\UT.jpg" />
+    <Content Include="Images\magnets\VA.jpg" />
+    <Content Include="Images\magnets\VT.jpg" />
+    <Content Include="Images\magnets\VTdk.jpg" />
+    <Content Include="Images\magnets\WA.jpg" />
+    <Content Include="Images\magnets\WV.jpg" />
+    <Content Include="Images\magnets\WY.jpg" />
+    <Content Include="Images\minecraft\2x2_drop.png" />
+    <Content Include="Images\minecraft\3x3_drop.png" />
+    <Content Include="Images\minecraft\3x3_in_the_wild.png" />
+    <Content Include="Images\minecraft\crafting_fail.png" />
+    <Content Include="Images\minecraft\craft_axe.png" />
+    <Content Include="Images\minecraft\craft_axe_fail.png" />
+    <Content Include="Images\minecraft\craft_scramble_2x2.png" />
+    <Content Include="Images\minecraft\craft_scramble_3x3.png" />
+    <Content Include="Images\minecraft\craft_solve_3x3.png" />
+    <Content Include="Images\minecraft\craft_sword.png" />
+    <Content Include="Images\minecraft\creative_tab.png" />
+    <Content Include="Images\OBD_2\less_sensors.PNG" />
+    <Content Include="Images\OBD_2\open_import.PNG" />
+    <Content Include="Images\OBD_2\Overview.PNG" />
+    <Content Include="Images\OBD_2\partial.PNG" />
+    <Content Include="Images\OBD_2\running.PNG" />
+    <Content Include="Images\OBD_2\workflow.PNG" />
+    <Content Include="Images\onesies\4001.JPG" />
+    <Content Include="Images\onesies\4002.JPG" />
+    <Content Include="Images\onesies\4003.JPG" />
+    <Content Include="Images\onesies\4004.JPG" />
+    <Content Include="Images\onesies\4005.JPG" />
+    <Content Include="Images\onesies\4006.JPG" />
+    <Content Include="Images\onesies\4007.JPG" />
+    <Content Include="Images\onesies\4008.JPG" />
+    <Content Include="Images\onesies\4009.JPG" />
+    <Content Include="Images\onesies\4010.JPG" />
+    <Content Include="Images\onesies\4011.JPG" />
+    <Content Include="Images\onesies\4012.JPG" />
+    <Content Include="Images\onesies\4013.JPG" />
+    <Content Include="Images\onesies\4014.JPG" />
+    <Content Include="Images\onesies\4015.JPG" />
+    <Content Include="Images\onesies\4016.JPG" />
+    <Content Include="Images\onesies\4017.JPG" />
+    <Content Include="Images\onesies\4018.JPG" />
+    <Content Include="Images\onesies\4019.JPG" />
+    <Content Include="Images\onesies\4020.JPG" />
+    <Content Include="Images\onesies\4021.JPG" />
+    <Content Include="Images\onesies\4022.JPG" />
+    <Content Include="Images\onesies\4023.JPG" />
+    <Content Include="Images\onesies\4024.JPG" />
+    <Content Include="Images\onesies\4025.JPG" />
+    <Content Include="Images\onesies\4026.JPG" />
+    <Content Include="Images\onesies\4027.jpg" />
+    <Content Include="Images\onesies\4028.jpg" />
+    <Content Include="Images\onesies\4029.jpg" />
+    <Content Include="Images\onesies\4030.jpg" />
+    <Content Include="Images\onesies\4031.JPG" />
+    <Content Include="Images\onesies\4032.JPG" />
+    <Content Include="Images\onesies\4033.JPG" />
+    <Content Include="Images\onesies\4034.JPG" />
+    <Content Include="Images\onesies\4035.JPG" />
+    <Content Include="Images\onesies\4036.JPG" />
+    <Content Include="Images\onesies\4071.JPG" />
+    <Content Include="Images\onesies\4072.JPG" />
+    <Content Include="Images\onesies\4201.JPG" />
+    <Content Include="Images\onesies\4202.JPG" />
+    <Content Include="Images\onesies\4203.JPG" />
+    <Content Include="Images\onesies\4204.JPG" />
+    <Content Include="Images\onesies\4205.JPG" />
+    <Content Include="Images\onesies\4206.JPG" />
+    <Content Include="Images\onesies\4207.JPG" />
+    <Content Include="Images\onesies\4208.JPG" />
+    <Content Include="Images\onesies\4209.JPG" />
+    <Content Include="Images\onesies\4210.JPG" />
+    <Content Include="Images\onesies\4211.JPG" />
+    <Content Include="Images\onesies\4212.JPG" />
+    <Content Include="Images\onesies\4213.JPG" />
+    <Content Include="Images\onesies\4214.JPG" />
+    <Content Include="Images\onesies\4215.JPG" />
+    <Content Include="Images\onesies\4216.JPG" />
+    <Content Include="Images\onesies\4217.JPG" />
+    <Content Include="Images\onesies\4218.JPG" />
+    <Content Include="Images\onesies\4219.JPG" />
+    <Content Include="Images\onesies\4220.JPG" />
+    <Content Include="Images\onesies\4221.JPG" />
+    <Content Include="Images\onesies\4222.JPG" />
+    <Content Include="Images\onesies\4223.JPG" />
+    <Content Include="Images\onesies\4224.JPG" />
+    <Content Include="Images\onesies\4225.JPG" />
+    <Content Include="Images\onesies\4226.JPG" />
+    <Content Include="Images\onesies\4227.JPG" />
+    <Content Include="Images\onesies\4228.JPG" />
+    <Content Include="Images\onesies\4229.jpg" />
+    <Content Include="Images\onesies\4230.jpg" />
+    <Content Include="Images\onesies\4231.JPG" />
+    <Content Include="Images\onesies\4232.JPG" />
+    <Content Include="Images\onesies\4233.JPG" />
+    <Content Include="Images\onesies\4234.JPG" />
+    <Content Include="Images\onesies\4235.JPG" />
+    <Content Include="Images\onesies\4236.JPG" />
+    <Content Include="Images\onesies\4405.JPG" />
+    <Content Include="Images\onesies\4406.JPG" />
+    <Content Include="Images\onesies\4411.JPG" />
+    <Content Include="Images\onesies\4412.JPG" />
+    <Content Include="Images\onesies\4415.JPG" />
+    <Content Include="Images\onesies\4416.JPG" />
+    <Content Include="Images\onesies\4421.JPG" />
+    <Content Include="Images\onesies\4422.JPG" />
+    <Content Include="Images\onesies\4423.JPG" />
+    <Content Include="Images\onesies\4424.JPG" />
+    <Content Include="Images\onesies\4425.JPG" />
+    <Content Include="Images\onesies\4426.JPG" />
+    <Content Include="Images\onesies\4427.JPG" />
+    <Content Include="Images\onesies\4428.JPG" />
+    <Content Include="Images\onesies\4441.JPG" />
+    <Content Include="Images\onesies\4442.JPG" />
+    <Content Include="Images\onesies\4443.htm" />
+    <Content Include="Images\onesies\4443.JPG" />
+    <Content Include="Images\onesies\4444.JPG" />
+    <Content Include="Images\onesies\4445.JPG" />
+    <Content Include="Images\onesies\4446.JPG" />
+    <Content Include="Images\onesies\4451.JPG" />
+    <Content Include="Images\onesies\4452.JPG" />
+    <Content Include="Images\onesies\4453.JPG" />
+    <Content Include="Images\onesies\4454.JPG" />
+    <Content Include="Images\onesies\4455.JPG" />
+    <Content Include="Images\onesies\4456.JPG" />
+    <Content Include="Images\onesies\4475.JPG" />
+    <Content Include="Images\onesies\4476.JPG" />
+    <Content Include="Images\onesies\4601.JPG" />
+    <Content Include="Images\onesies\4602.JPG" />
+    <Content Include="Images\onesies\4603.JPG" />
+    <Content Include="Images\onesies\4604.JPG" />
+    <Content Include="Images\onesies\4605.JPG" />
+    <Content Include="Images\onesies\4606.JPG" />
+    <Content Include="Images\onesies\4607.JPG" />
+    <Content Include="Images\onesies\4608.JPG" />
+    <Content Include="Images\onesies\4609.JPG" />
+    <Content Include="Images\onesies\4610.JPG" />
+    <Content Include="Images\onesies\4611.JPG" />
+    <Content Include="Images\onesies\4612.JPG" />
+    <Content Include="Images\onesies\4613.JPG" />
+    <Content Include="Images\onesies\4614.JPG" />
+    <Content Include="Images\onesies\4615.JPG" />
+    <Content Include="Images\onesies\4616.JPG" />
+    <Content Include="Images\onesies\4621.JPG" />
+    <Content Include="Images\onesies\4622.JPG" />
+    <Content Include="Images\onesies\4623.JPG" />
+    <Content Include="Images\onesies\4624.JPG" />
+    <Content Include="Images\onesies\4625.JPG" />
+    <Content Include="Images\onesies\4626.JPG" />
+    <Content Include="Images\onesies\4627.JPG" />
+    <Content Include="Images\onesies\4628.JPG" />
+    <Content Include="Images\onesies\4629.JPG" />
+    <Content Include="Images\onesies\4630.JPG" />
+    <Content Include="Images\onesies\4631.JPG" />
+    <Content Include="Images\onesies\4632.JPG" />
+    <Content Include="Images\onesies\4633.JPG" />
+    <Content Include="Images\onesies\4634.JPG" />
+    <Content Include="Images\onesies\4635.JPG" />
+    <Content Include="Images\onesies\4636.JPG" />
+    <Content Include="Images\onesies\4675.JPG" />
+    <Content Include="Images\onesies\4676.JPG" />
+    <Content Include="Images\onesies\4677.JPG" />
+    <Content Include="Images\onesies\4678.JPG" />
+    <Content Include="Images\onesies\4679.JPG" />
+    <Content Include="Images\onesies\4680.JPG" />
+    <Content Include="Images\onesies\4801.JPG" />
+    <Content Include="Images\onesies\4802.JPG" />
+    <Content Include="Images\onesies\4803.JPG" />
+    <Content Include="Images\onesies\4804.JPG" />
+    <Content Include="Images\onesies\carter_large_onesies.htm" />
+    <Content Include="Images\onesies\carter_medium_onesies.htm" />
+    <Content Include="Images\onesies\fbrainbow.htm" />
+    <Content Include="Images\onesies\fbrainbowback.jpg" />
+    <Content Include="Images\onesies\fbrainbowfront.jpg" />
+    <Content Include="Images\onesies\gerber_medium_onesies.htm" />
+    <Content Include="Images\onesies\sunback.jpg" />
+    <Content Include="Images\onesies\sunfront.jpg" />
+    <Content Include="Images\Simon\device-10-xhdpi-6flat.png" />
+    <Content Include="Images\Simon\device-10-xhdpi-6metallic-hint.png" />
+    <Content Include="Images\Simon\device-10-xhdpi-6metallic-menu.png" />
+    <Content Include="Images\Simon\device-10-xhdpi-6metallic-menu2.png" />
+    <Content Include="Images\Simon\device-10-xhdpi-6metallic-menul.png" />
+    <Content Include="Images\Simon\device-10-xhdpi-6raised.png" />
+    <Content Include="Images\Simon\device-10-xhdpi-flat.png" />
+    <Content Include="Images\Simon\device-10-xhdpi-metallic.png" />
+    <Content Include="Images\Simon\device-10-xhdpi-raised.png" />
+    <Content Include="Images\Simon\device-phone-flat4.png" />
+    <Content Include="Images\Simon\device-phone-flat6.png" />
+    <Content Include="Images\Simon\device-phone-menu.png" />
+    <Content Include="Images\Simon\device-phone-metal4.png" />
+    <Content Include="Images\Simon\device-phone-metal6.png" />
+    <Content Include="Images\Simon\device-phone-options.png" />
+    <Content Include="Images\Simon\device-phone-raised4.png" />
+    <Content Include="Images\Simon\device-phone-raised6.png" />
+    <Content Include="Images\Simon\feature.png" />
+    <Content Include="Models\TadaaTieDyeEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TadaaTieDyeEntities.edmx</DependentUpon>
+      <LastGenOutput>TadaaTieDyeEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TadaaTieDyeEntities.edmx.diagram">
+      <DependentUpon>TadaaTieDyeEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\TadaaTieDyeEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TadaaTieDyeEntities.edmx</DependentUpon>
+      <LastGenOutput>TadaaTieDyeEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Downloads\Code_Scanner_Graph.zip" />
+    <Content Include="Downloads\test21_all.dat" />
+    <Content Include="Downloads\test22_all.dat" />
+    <Content Include="Downloads\test23_all.dat" />
+    <Content Include="Downloads\test31.dat" />
+    <Content Include="Downloads\Snell_Resume.pdf" />
+    <Content Include="Downloads\Simon.apk" />
+    <Content Include="Downloads\_PageNavPartial.cshtml" />
+    <None Include="Properties\PublishProfiles\TadaaTieDye.com - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\flyOutMenu.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\timeOfDayStyleSheet.js" />
+    <Content Include="Scripts\writeTimeAndDate.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Views\Shared\_TopMenu.cshtml" />
+    <Content Include="Views\Magnets\Index.cshtml" />
+    <Content Include="Views\Magnets\Details.cshtml" />
+    <Content Include="Views\Magnets\Create.cshtml" />
+    <Content Include="Views\Magnets\Edit.cshtml" />
+    <Content Include="Views\Magnets\Delete.cshtml" />
+    <Content Include="Views\Clothing\Index.cshtml" />
+    <Content Include="Views\Clothing\Details.cshtml" />
+    <Content Include="Views\Clothing\Create.cshtml" />
+    <Content Include="Views\Clothing\Edit.cshtml" />
+    <Content Include="Views\Clothing\Delete.cshtml" />
+    <Content Include="Views\DIY\Books.cshtml" />
+    <Content Include="Views\DIY\DVD.cshtml" />
+    <Content Include="Views\DIY\Index.cshtml" />
+    <Content Include="Views\About\Tour.cshtml" />
+    <Content Include="Views\About\OBD_Graph.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Details.cshtml" />
+    <Content Include="Views\Cart\Create.cshtml" />
+    <Content Include="Views\Cart\Edit.cshtml" />
+    <Content Include="Views\Cart\Delete.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Cart\ShowCart.cshtml" />
+    <Content Include="Views\Cart\AddToCart.cshtml" />
+    <Content Include="Views\Magnets\AddToCart.cshtml" />
+    <Content Include="Views\Shared\_PageNavPartial.cshtml" />
+    <Content Include="Views\Clothing\Size.cshtml" />
+    <Content Include="Views\Clothing\Type.cshtml" />
+    <Content Include="Views\Clothing\Browse.cshtml" />
+    <Content Include="Views\Errors\Error.cshtml" />
+    <Content Include="Views\User\Manage.cshtml" />
+    <Content Include="Views\User\Password.cshtml" />
+    <Content Include="Views\Error\HttpError404.cshtml" />
+    <Content Include="Views\Error\HttpError500.cshtml" />
+    <Content Include="Views\Error\General.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\About\MinecraftMods.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\AndroidApps.cshtml" />
+    <Content Include="Views\About\Simon.cshtml" />
+    <Content Include="Views\Tour\Index.cshtml" />
+    <Content Include="_TourNav.cshtml" />
+    <Content Include="Views\Tour\CssColors.cshtml" />
+    <Content Include="Views\Tour\AbstractCart.cshtml" />
+    <Content Include="Views\Tour\Paging.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4466</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1951/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,68 @@
+﻿@model MySite.Models.Users
+
+@{
+    ViewBag.Title = "Manage Your Account";
+}
+
+<h2>Manage Your Account</h2>
+
+<fieldset>
+    <legend>Your current Info:</legend>
+    
+
+
+    <div class="display-label">
+          @Html.DisplayNameFor(model => model.Username): 
+
+         @Html.DisplayFor(model => model.Username) 
+    </div>
+
+
+    <div class="display-label">
+          @Html.DisplayNameFor(model => model.Fname): 
+
+         @Html.DisplayFor(model => model.Fname) 
+    </div>
+
+    <div class="display-label">
+          @Html.DisplayNameFor(model => model.Lname): 
+
+         @Html.DisplayFor(model => model.Lname) 
+    </div>
+
+    <div class="display-label">
+          @Html.DisplayNameFor(model => model.Address): 
+
+         @Html.DisplayFor(model => model.Address) 
+    </div>
+
+    <div class="display-label">
+          @Html.DisplayNameFor(model => model.City): 
+
+         @Html.DisplayFor(model => model.City) 
+    </div>
+
+    <div class="display-label">
+          @Html.DisplayNameFor(model => model.State): 
+
+         @Html.DisplayFor(model => model.State) 
+    </div>
+
+    <div class="display-label">
+          @Html.DisplayNameFor(model => model.Zip): 
+
+         @Html.DisplayFor(model => model.Zip) 
+    </div>
+
+    <div class="display-label">
+          @Html.DisplayNameFor(model => model.Email): 
+
+         @Html.DisplayFor(model => model.Email) 
+    </div>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Change your password", "Password", routeValues: new { id=Model.Id }) |
+    @Html.ActionLink("Update your info", "Edit", routeValues:  new { id=Model.Id }) |
+    @Html.ActionLink("View your shopping cart", "ShowCart", "Cart", routeValues: new { id=Model.Id}, htmlAttributes: new { returnUrl = Request.Url.ToString()})
+</p>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MySite.Models.CartItems>
+
+@{
+    int lineNumber = 1;
+    ViewBag.Title = "Checkout";
+    @ViewBag.message
+}
+
+<h2>Checkout</h2>
+
+
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myContainer", action = "https://www.sandbox.paypal.com/cgi-bin/webscr?sandbox=1&direct=0&returnurl=plesk.tadaatiedye.com/Cart/CheckoutComplete&cancelurl=plesk.tadaatiedye.com/Cart/CheckoutCancelled" }))
+{
+    @Html.Hidden("cmd", "_cart")
+    @Html.Hidden("upload", "1")
+    @Html.Hidden("business", "cube-facilitator@tadaatiedye.com")
+    @Html.Hidden("currency_code", "USD")
+    <table class="cart">
+    <thead>
+        <tr></tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ItemId)</th>
+            <th>@Html.DisplayNameFor(model => model.ItemName)</th>
+            <th>@Html.DisplayNameFor(model => model.ItemCost)</th>
+            <th>@Html.DisplayNameFor(model => model.ItemQty)</th>
+            <th>@Html.DisplayNameFor(model => model.subTotal)</th>
+        </tr>
+    </thead>
+        @foreach (var item in Model)
+        {
+            <tr class="line_item">
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemId)
+    @Html.Hidden("item_number_"+lineNumber, item.ItemId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+    @Html.Hidden("item_name_"+lineNumber, item.ItemName)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.ItemCost)
+    @Html.Hidden("amount_"+lineNumber, item.ItemCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemQty)
+    @Html.Hidden("quantity_"+lineNumber, item.ItemQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subTotal)
+                </td>
+
+
+ </tr>
+            lineNumber += 1;
+        }
+</table>
+
+@*    @Html.Hidden("item_number_2", "SMFL")
+    @Html.Hidden("item_name_2", "Florida")
+    @Html.Hidden("quantity_2", "3")
+    @Html.Hidden("amount_2", "1.99")*@
+
+@*<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">*@
+}
+<script>
+   window.paypalCheckoutReady = function () {
+       paypal.checkout.setup('TBZYYR9QUA6H8', {
+         environment: 'sandbox',
+         container: 'myContainer'
+       });
+  };
+</script>
+  <script async src="//www.paypalobjects.com/api/checkout.js" ></script>

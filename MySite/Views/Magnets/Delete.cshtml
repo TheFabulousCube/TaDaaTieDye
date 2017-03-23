@@ -1,0 +1,75 @@
+﻿@model MySite.Models.Magnets
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Magnets</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdPicture)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdPicture)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdPrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdQty)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdQty)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Catagory)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Catagory)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Capital)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Capital)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Statehood)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Statehood)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

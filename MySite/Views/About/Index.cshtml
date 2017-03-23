@@ -1,0 +1,15 @@
+﻿
+
+@{
+    ViewBag.Title = "About Me!";
+}
+
+<h2>About Cube</h2>
+<p>This is just a simple page with links, a resume, and past projects I've done.  </p>
+<ul>
+    <li>@Html.ActionLink("My Resume", "Download", new { file="Snell_Resume.pdf"})</li>
+    <li>@Html.ActionLink("A behind the scenes tour of this website", "Tour")</li>
+    <li>A @Html.ActionLink("graphing tool", "OBD_Graph") for (my) OBD-II code reader, in C# using Visual Studio.</li>
+    <li>@Html.ActionLink("Android", "AndroidApps")</li>
+    <li>A @Html.ActionLink("Minecraft Mod", "MinecraftMods") I made using Java</li>
+</ul>

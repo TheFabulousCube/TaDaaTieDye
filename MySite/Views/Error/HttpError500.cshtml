@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "HttpError500";
+}
+
+<h2>HttpError500</h2>
+
+
+	<article>
+	<h1>500: Internal Server Error</h1>\
+        Error message: @ViewBag.message
+		<img src="~/Images/giraffes.jpg" style="float: right" width="320" height="207" alt="Cute picture of giraffes, everybody loves giraffes!">
+	<p>	Dang.  I'm sorry.  This time it really is my fault.  Someone's working on a major update to the website.
+	<p>I know we shouldn't be doing this live, but the server reacts kinda funny sometimes. (Not funny like 'Ha, ha' funny.  Funny like things that work just fine in development have to be completely restructured to work on the server.) 
+	<br><br>I'm working to get thinkgs running again very soon.  Please be patient, it'll be great!  Or maybe not, it's probably just a bunch of background stuff you'll never see.  But it'll work much better.
+	<br>Thanks for stopping by, please try again later.
+		<img src="~/Images/dolphins.jpg" style="float: left" width="320" height="240" alt="Cool picture of dolphins.">
+		<p>You got here from @Html.ActionLink( (string) ViewBag.returnUrl,  (string) ViewBag.returnUrl), you can go back there if you want.</p>
+		
+	</article>

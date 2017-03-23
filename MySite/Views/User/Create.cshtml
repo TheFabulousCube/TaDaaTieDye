@@ -1,0 +1,109 @@
+﻿@model MySite.Models.Users
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+@using MySite.Helpers
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+
+           
+
+    <fieldset>
+        <legend>Required</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.DisplayAllErrors("Username")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)            
+            @Html.DisplayAllErrors("Password")
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Optional</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Fname)
+            @Html.DisplayAllErrors("Fname")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Lname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Lname)
+            @Html.DisplayAllErrors("Lname")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.DisplayAllErrors("Address")
+
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.City)
+            @Html.DisplayAllErrors("City")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.State)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.State)
+            @Html.DisplayAllErrors("State")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Zip)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Zip)
+            @Html.DisplayAllErrors("Zip")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.DisplayAllErrors("Email")
+        </div>
+
+        
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Login", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

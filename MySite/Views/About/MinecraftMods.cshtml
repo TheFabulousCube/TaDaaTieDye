@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "MinecraftMods";
+}
+
+<h2>Minecraft Mods</h2>
+<article class="GitHub">
+    You can downlod the code for my 
+<a href="https://github.com/TheFabulousCube/MinecraftMods">Minecraft Mod</a> on GitHub.
+</article>
+<p>Okay, I've only done one, so far.  I'm not sure mods for Minecraft are a real feat, but it is written in Java and was a good learning experience.</p>
+@Html.ActionLink("Cube's PuzzleCubes Mod", "Download", new { file="puzzlecubes_2.3.jar" })
+<p>Minecraft Version 1.7.10, Requires Forge</p>
+<p>This mod adds several Rubik's Cubes to the game.  They are generated with the world, you must have the mod installed when you generate the world.  It will place 2X2x2, 3X3x3, and 4X4X4 Rubik's cubes throughout the world.</p>
+<img src="~/Images/minecraft/3x3_in_the_wild.png" alt="3 by 3 by 3 cubes embeded in a snowy hill" />
+<p>Generally, the 2x2x2 cubes behave like dirt.  They spawn higher, break easier, and will drop when broken by hand.</p>
+<img src="~/Images/minecraft/2x2_drop.png" alt="2 by 2 by 2 cubes as blocks, one has been broken and floats as an item" />
+<p>The 3x3x3 cubes follow stone.  They spawn lower, are tougher to break, and <strong>must</strong> be mined with a tool to drop as an item.</p>
+<img src="~/Images/minecraft/3x3_drop.png" alt="3 by 3 by 3 cubes as blocks, one has been broken and floats as an item" />
+<p>The blocks based on the Rubik's Revenge puzzle are much deeper, harder to break, and also require mining with a tool if you want them to drop as an item.</p>
+<img src="~/Images/minecraft/4x4_drop.png" alt="I actually had a hard time finding any when I was making these pictures.  They are rarer than the others." />
+<p>All of the cubes are found scrambled, and drop an item block that's solved.  You can scramble them back by crafting . . . <br />
+    <img src="~/Images/minecraft/craft_scramble_2x2.png" alt="Crafting a 2 by 2 by 2 cube from solved to scrambled." /><img src="~/Images/minecraft/craft_scramble_3x3.png" alt="Crafting a 3 by 3 by 3 cube from solved to scrambled." />
+    <br />
+    You can then solve them the same way . . .<br /><img src="~/Images/minecraft/craft_solve_3x3.png" alt="Crafting 3 by 3 by 3 cube from scrambled to solved." />
+</p>
+<p>You can craft all of the tools out of the cubes . . .</p>
+<img src="~/Images/minecraft/craft_axe.png" alt="Crafting cubes into a pickaxe, standard recipie with sticks." /><img src="~/Images/minecraft/craft_sword.png" alt="Crafting cubes into a sword, standard recipie with a stick." />
+<br />
+<p>The cubes you craft with <strong>must</strong> be solved, though . . .</p>
+<img src="~/Images/minecraft/craft_axe_fail.png" alt="Scrambled cubes in a crafting recipie for a pickaxe, doesn't work." />
+<img src="~/Images/minecraft/crafting_fail.png" alt="Scrambled cubes in a crafting recipie for a sword, doesn't work." />
+<p>All of the additions are available from thier own creative tab. <img src="~/Images/minecraft/creative_tab.png" alt="Creative tab for the Rubik's Cubes mod." /></p>
+<br />
+<p>I'm not sure why I didn't include armor.  Maybe in the 1.10 update!</p>

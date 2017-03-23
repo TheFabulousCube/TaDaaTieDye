@@ -1,0 +1,56 @@
+﻿@model MySite.Models.Magnets
+
+
+
+<fieldset class="flexsingle" style="text-align: center">
+    <legend></legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdId): 
+
+        @Html.DisplayFor(model => model.ProdId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdName):
+
+        @Html.DisplayFor(model => model.ProdName)
+    </div>
+
+    <div class="display-field">
+        <img src="@Model.ProdPicture" alt="@Model.ProdName" style="max-width: 150px; height: auto;" />
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdPrice):
+
+        @Html.DisplayFor(model => model.ProdPrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdQty):
+
+        @Html.DisplayFor(model => model.ProdQty)
+    </div>
+
+
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Capital):
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Capital)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Statehood):
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Statehood)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Add to cart", "addToCart", "Cart", new { id=Model.ProdId, qty = 1, returnUrl = "~/Magnets/Details/" + Model.ProdId }, null) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

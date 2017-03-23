@@ -1,0 +1,34 @@
+﻿<nav id="sidebar">
+        <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
+    <div class="flyOutMenu">
+        <h3>@Html.ActionLink("Clothing", "Index", "Clothing")</h3>
+            <ul>
+                <li>@Html.ActionLink("Browse All", "Browse", "Clothing")</li>
+                <li>@Html.ActionLink("By Size", "Size", "Clothing")</li>
+                <li>@Html.ActionLink("By Type", "Type", "Clothing")</li>
+            </ul>
+        <h3>@Html.ActionLink("DIY", "Index", "DIY") </h3>
+            <ul>
+                <li>@Html.ActionLink("DVDs", "DVD", "DIY")</li>
+                <li>@Html.ActionLink("Books ", "Books", "DIY")</li>
+            </ul>
+       
+        <h3>@Html.ActionLink("Other Projects", "Index", "About")</h3>
+            <ul>
+                <li>@Html.ActionLink("Simon (Android)  ", "Simon", "About")</li>
+                <li>@Html.ActionLink("Minecraft Mods", "MinecraftMods", "About")</li>
+                <li>@Html.ActionLink("OBD-II Graph", "OBD_Graph", "About")</li>
+            </ul>
+         
+        <h3>@Html.ActionLink("Behind the Scenes", "Tour", "About")</h3>
+            <ul>
+                <li>@Html.ActionLink("Rotating Color Scheme", "CssColors", "Tour")</li>
+                <li>@Html.ActionLink("Abstract Cart (PHP)", "AbstractCart", "Tour")</li> 
+                <li>@Html.ActionLink("Pagination", "Paging", "Tour")</li>           
+            </ul>
+        <h3>@Html.ActionLink("Your Account", "Index", "User")</h3>
+        
+</div>
+
+
+</nav>

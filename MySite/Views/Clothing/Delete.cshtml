@@ -1,0 +1,75 @@
+﻿@model MySite.Models.Clothing
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Clothing</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdPicture)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdPicture)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdPrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdQty)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdQty)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Catagory_Lookup.Type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Catagory_Lookup.Type)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BackPicture)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BackPicture)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Size_Lookup.Size)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Size_Lookup.Size)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Sleeve_Lookup.Sleeve_Length)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sleeve_Lookup.Sleeve_Length)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

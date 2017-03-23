@@ -1,0 +1,52 @@
+﻿@model MySite.Models.Cart
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Cart</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserId, "Users")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("UserId", String.Empty)
+            @Html.ValidationMessageFor(model => model.UserId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProdID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProdID)
+            @Html.ValidationMessageFor(model => model.ProdID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Qty)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Qty)
+            @Html.ValidationMessageFor(model => model.Qty)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

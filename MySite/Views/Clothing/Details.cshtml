@@ -1,0 +1,58 @@
+﻿@model MySite.Models.Clothing
+
+@{
+    ViewBag.Title = "Details";
+    string sender = ViewBag.sender;
+    string catagory = ViewBag.catagory;
+}
+
+
+
+<fieldset class="flexsingle" style="text-align: center">
+    <legend></legend>
+
+    <div>
+         @Html.DisplayNameFor(model => model.ProdId): 
+
+        @Html.DisplayFor(model => model.ProdId)
+    </div>
+
+
+    <div class="display-field">
+        <img src="@Model.ProdPicture" alt="@Model.Catagory"  />
+        <img src="@Model.BackPicture" alt="@Model.Catagory"  />
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdPrice):
+
+        @Html.DisplayFor(model => model.ProdPrice)
+    </div>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Catagory_Lookup.Type): 
+
+        @Html.DisplayFor(model => model.Catagory_Lookup.Type)
+    </div>
+
+
+         
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Size_Lookup.Size): 
+
+        @Html.DisplayFor(model => model.Size_Lookup.Size)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Sleeve_Lookup.Sleeve_Length): 
+
+        @Html.DisplayFor(model => model.Sleeve_Lookup.Sleeve_Length)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Add To Cart", "AddToCart", "Cart", new { id=Model.ProdId, qty=1, returnUrl = "~/Clothing/Details/" + Model.ProdId }, null) |
+    @Html.ActionLink("Back to List", sender, new { catagory = Model.Catagory, size = Model.Size }, null)
+</p>

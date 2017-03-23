@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MySite.Models.Clothing>
+
+@{
+    ViewBag.Title = "Clothing by Size";
+}
+
+<h2>Tie Dyed Stuff! by Size</h2>
+
+<p>
+    @Html.Partial("_PageNavPartial")
+</p>
+    <div class="DropDownFilter">
+@using (Html.BeginForm("Size", "Clothing", FormMethod.Get))
+{
+
+//    string sizeDefault = (ViewBag.size == null) ? "Show all" : ViewBag.size;
+        <text>  Size:</text>@Html.DropDownList("size", new SelectList(ViewBag.sizeQuery, "SizeId", "Size"), "Show All", new { onchange = "this.form.submit();" });
+
+}
+    </div>
+<div class ="flexcontainer">
+@foreach (var item in Model) {
+    <ul class="flexsingle"> 
+        <li>@Html.DisplayFor(modelItem => item.ProdId)</li>
+        <li>@Html.DisplayFor(modelItem => item.Catagory_Lookup.Type)</li>  
+        <li>@Html.DisplayFor(modelItem => item.Size_Lookup.Size)</li>
+        <li><img src="@item.ProdPicture" alt="@item.Catagory_Lookup.Type" style="max-width: 75px; height: auto;" /></li>
+
+        <li>@Html.DisplayFor(modelItem => item.ProdPrice)</li>
+        <li>@Html.ActionLink("Add To Cart", "AddToCart", "Cart", new { id=item.ProdId, qty=1, returnUrl="~/Clothing/Size/"}, null) </li>
+
+            @Html.ActionLink("Details", "Details", new { id=item.ProdId , returnUrl="Size/"})
+    </ul>    
+}
+</div>
+
+

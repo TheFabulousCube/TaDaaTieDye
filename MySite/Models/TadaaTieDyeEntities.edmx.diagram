@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="12791ee22bb14dab9a6e5aa16d388369" Name="Diagram1">
+        <EntityTypeShape EntityType="TaDaaTieDyeModel.Cart" Width="1.5" PointX="10.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaDaaTieDyeModel.Catagory_Lookup" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaDaaTieDyeModel.Clothing" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaDaaTieDyeModel.Magnets" Width="1.5" PointX="5.625" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaDaaTieDyeModel.Role_Lookup" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaDaaTieDyeModel.Size_Lookup" Width="1.5" PointX="2.375" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaDaaTieDyeModel.Sleeve_Lookup" Width="1.5" PointX="0.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaDaaTieDyeModel.Users" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="TaDaaTieDyeModel.fk_cart_user" ManuallyRouted="false" />
+        <AssociationConnector Association="TaDaaTieDyeModel.fk_cloth_cat" ManuallyRouted="false" />
+        <AssociationConnector Association="TaDaaTieDyeModel.fk_cloth_size" ManuallyRouted="false" />
+        <AssociationConnector Association="TaDaaTieDyeModel.fk_sleeves" ManuallyRouted="false" />
+        <AssociationConnector Association="TaDaaTieDyeModel.fk_role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TaDaaTieDyeModel.Download" Width="1.5" PointX="8.875" PointY="4.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

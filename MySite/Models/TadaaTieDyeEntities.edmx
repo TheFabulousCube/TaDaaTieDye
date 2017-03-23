@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TaDaaTieDyeModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TaDaaTieDyeModelStoreContainer">
+          <EntitySet Name="Cart" EntityType="TaDaaTieDyeModel.Store.Cart" store:Type="Tables" Schema="TaDaaTieDyeTPC" />
+          <EntitySet Name="Catagory_Lookup" EntityType="TaDaaTieDyeModel.Store.Catagory_Lookup" store:Type="Tables" Schema="TaDaaTieDyeTPC" />
+          <EntitySet Name="Clothing" EntityType="TaDaaTieDyeModel.Store.Clothing" store:Type="Tables" Schema="TaDaaTieDyeTPC" />
+          <EntitySet Name="Downloads" EntityType="TaDaaTieDyeModel.Store.Downloads" store:Type="Tables" Schema="TaDaaTieDyeTPC" />
+          <EntitySet Name="Magnets" EntityType="TaDaaTieDyeModel.Store.Magnets" store:Type="Tables" Schema="TaDaaTieDyeTPC" />
+          <EntitySet Name="Role_Lookup" EntityType="TaDaaTieDyeModel.Store.Role_Lookup" store:Type="Tables" Schema="TaDaaTieDyeTPC" />
+          <EntitySet Name="Size_Lookup" EntityType="TaDaaTieDyeModel.Store.Size_Lookup" store:Type="Tables" Schema="TaDaaTieDyeTPC" />
+          <EntitySet Name="Sleeve_Lookup" EntityType="TaDaaTieDyeModel.Store.Sleeve_Lookup" store:Type="Tables" Schema="TaDaaTieDyeTPC" />
+          <EntitySet Name="Users" EntityType="TaDaaTieDyeModel.Store.Users" store:Type="Tables" Schema="TaDaaTieDyeTPC" />
+          <AssociationSet Name="fk_cart_user" Association="TaDaaTieDyeModel.Store.fk_cart_user">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cloth_cat" Association="TaDaaTieDyeModel.Store.fk_cloth_cat">
+            <End Role="Catagory_Lookup" EntitySet="Catagory_Lookup" />
+            <End Role="Clothing" EntitySet="Clothing" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cloth_size" Association="TaDaaTieDyeModel.Store.fk_cloth_size">
+            <End Role="Size_Lookup" EntitySet="Size_Lookup" />
+            <End Role="Clothing" EntitySet="Clothing" />
+          </AssociationSet>
+          <AssociationSet Name="fk_role" Association="TaDaaTieDyeModel.Store.fk_role">
+            <End Role="Role_Lookup" EntitySet="Role_Lookup" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sleeves" Association="TaDaaTieDyeModel.Store.fk_sleeves">
+            <End Role="Sleeve_Lookup" EntitySet="Sleeve_Lookup" />
+            <End Role="Clothing" EntitySet="Clothing" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ProdID" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ProdID" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Catagory_Lookup">
+          <Key>
+            <PropertyRef Name="CatId" />
+          </Key>
+          <Property Name="CatId" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Clothing">
+          <Key>
+            <PropertyRef Name="ProdId" />
+          </Key>
+          <Property Name="ProdId" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="ProdPicture" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="ProdPrice" Type="decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ProdQty" Type="int" Nullable="false" />
+          <Property Name="Catagory" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="BackPicture" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="Size" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="SleeveLength" Type="varchar" Nullable="false" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Downloads">
+          <Key>
+            <PropertyRef Name="FileNameID" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="FileNameID" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="Downloads" Type="int" />
+          <Property Name="Date" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Magnets">
+          <Key>
+            <PropertyRef Name="ProdId" />
+          </Key>
+          <Property Name="ProdId" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="ProdPicture" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="ProdPrice" Type="decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ProdQty" Type="int" Nullable="false" />
+          <Property Name="Catagory" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ProdName" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="Capital" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Statehood" Type="varchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Role_Lookup">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="Role" Type="varchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Size_Lookup">
+          <Key>
+            <PropertyRef Name="SizeId" />
+          </Key>
+          <Property Name="SizeId" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Size" Type="varchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Sleeve_Lookup">
+          <Key>
+            <PropertyRef Name="SleeveID" />
+          </Key>
+          <Property Name="SleeveID" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="Sleeve Length" Type="varchar" Nullable="false" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="Fname" Type="varchar" MaxLength="25" />
+          <Property Name="Lname" Type="varchar" MaxLength="25" />
+          <Property Name="Address" Type="varchar" MaxLength="45" />
+          <Property Name="City" Type="varchar" MaxLength="20" />
+          <Property Name="State" Type="varchar" MaxLength="2" />
+          <Property Name="Zip" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="45" />
+          <Property Name="Role" Type="varchar" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <Association Name="fk_cart_user">
+          <End Role="Users" Type="TaDaaTieDyeModel.Store.Users" Multiplicity="1" />
+          <End Role="Cart" Type="TaDaaTieDyeModel.Store.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cloth_cat">
+          <End Role="Catagory_Lookup" Type="TaDaaTieDyeModel.Store.Catagory_Lookup" Multiplicity="1" />
+          <End Role="Clothing" Type="TaDaaTieDyeModel.Store.Clothing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catagory_Lookup">
+              <PropertyRef Name="CatId" />
+            </Principal>
+            <Dependent Role="Clothing">
+              <PropertyRef Name="Catagory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cloth_size">
+          <End Role="Size_Lookup" Type="TaDaaTieDyeModel.Store.Size_Lookup" Multiplicity="1" />
+          <End Role="Clothing" Type="TaDaaTieDyeModel.Store.Clothing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size_Lookup">
+              <PropertyRef Name="SizeId" />
+            </Principal>
+            <Dependent Role="Clothing">
+              <PropertyRef Name="Size" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_role">
+          <End Role="Role_Lookup" Type="TaDaaTieDyeModel.Store.Role_Lookup" Multiplicity="1" />
+          <End Role="Users" Type="TaDaaTieDyeModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role_Lookup">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sleeves">
+          <End Role="Sleeve_Lookup" Type="TaDaaTieDyeModel.Store.Sleeve_Lookup" Multiplicity="1" />
+          <End Role="Clothing" Type="TaDaaTieDyeModel.Store.Clothing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sleeve_Lookup">
+              <PropertyRef Name="SleeveID" />
+            </Principal>
+            <Dependent Role="Clothing">
+              <PropertyRef Name="SleeveLength" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TaDaaTieDyeModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TaDaaTieDyeTPCEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Cart" EntityType="TaDaaTieDyeModel.Cart" />
+          <EntitySet Name="Catagory_Lookup" EntityType="TaDaaTieDyeModel.Catagory_Lookup" />
+          <EntitySet Name="Clothing" EntityType="TaDaaTieDyeModel.Clothing" />
+          <EntitySet Name="Magnets" EntityType="TaDaaTieDyeModel.Magnets" />
+          <EntitySet Name="Role_Lookup" EntityType="TaDaaTieDyeModel.Role_Lookup" />
+          <EntitySet Name="Size_Lookup" EntityType="TaDaaTieDyeModel.Size_Lookup" />
+          <EntitySet Name="Sleeve_Lookup" EntityType="TaDaaTieDyeModel.Sleeve_Lookup" />
+          <EntitySet Name="Users" EntityType="TaDaaTieDyeModel.Users" />
+          <AssociationSet Name="fk_cart_user" Association="TaDaaTieDyeModel.fk_cart_user">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cloth_cat" Association="TaDaaTieDyeModel.fk_cloth_cat">
+            <End Role="Catagory_Lookup" EntitySet="Catagory_Lookup" />
+            <End Role="Clothing" EntitySet="Clothing" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cloth_size" Association="TaDaaTieDyeModel.fk_cloth_size">
+            <End Role="Size_Lookup" EntitySet="Size_Lookup" />
+            <End Role="Clothing" EntitySet="Clothing" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sleeves" Association="TaDaaTieDyeModel.fk_sleeves">
+            <End Role="Sleeve_Lookup" EntitySet="Sleeve_Lookup" />
+            <End Role="Clothing" EntitySet="Clothing" />
+          </AssociationSet>
+          <AssociationSet Name="fk_role" Association="TaDaaTieDyeModel.fk_role">
+            <End Role="Role_Lookup" EntitySet="Role_Lookup" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Downloads" EntityType="TaDaaTieDyeModel.Download" />
+        </EntityContainer>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ProdID" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ProdID" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="TaDaaTieDyeModel.fk_cart_user" FromRole="Cart" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Catagory_Lookup">
+          <Key>
+            <PropertyRef Name="CatId" />
+          </Key>
+          <Property Name="CatId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Clothing" Relationship="TaDaaTieDyeModel.fk_cloth_cat" FromRole="Catagory_Lookup" ToRole="Clothing" />
+        </EntityType>
+        <EntityType Name="Clothing">
+          <Key>
+            <PropertyRef Name="ProdId" />
+          </Key>
+          <Property Name="ProdId" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="ProdPicture" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="ProdPrice" Type="Decimal" Nullable="false" />
+          <Property Name="ProdQty" Type="Int32" Nullable="false" />
+          <Property Name="Catagory" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="BackPicture" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="Size" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="SleeveLength" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Catagory_Lookup" Relationship="TaDaaTieDyeModel.fk_cloth_cat" FromRole="Clothing" ToRole="Catagory_Lookup" />
+          <NavigationProperty Name="Size_Lookup" Relationship="TaDaaTieDyeModel.fk_cloth_size" FromRole="Clothing" ToRole="Size_Lookup" />
+          <NavigationProperty Name="Sleeve_Lookup" Relationship="TaDaaTieDyeModel.fk_sleeves" FromRole="Clothing" ToRole="Sleeve_Lookup" />
+        </EntityType>
+        <EntityType Name="Magnets">
+          <Key>
+            <PropertyRef Name="ProdId" />
+          </Key>
+          <Property Name="ProdId" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="ProdPicture" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="ProdPrice" Type="Decimal" Nullable="false" />
+          <Property Name="ProdQty" Type="Int32" Nullable="false" />
+          <Property Name="Catagory" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ProdName" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Capital" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Statehood" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Role_Lookup">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Users" Relationship="TaDaaTieDyeModel.fk_role" FromRole="Role_Lookup" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Size_Lookup">
+          <Key>
+            <PropertyRef Name="SizeId" />
+          </Key>
+          <Property Name="SizeId" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Size" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Clothing" Relationship="TaDaaTieDyeModel.fk_cloth_size" FromRole="Size_Lookup" ToRole="Clothing" />
+        </EntityType>
+        <EntityType Name="Sleeve_Lookup">
+          <Key>
+            <PropertyRef Name="SleeveID" />
+          </Key>
+          <Property Name="SleeveID" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="Sleeve_Length" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Clothing" Relationship="TaDaaTieDyeModel.fk_sleeves" FromRole="Sleeve_Lookup" ToRole="Clothing" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Fname" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="Lname" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="Zip" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Cart" Relationship="TaDaaTieDyeModel.fk_cart_user" FromRole="Users" ToRole="Cart" />
+          <NavigationProperty Name="Role_Lookup" Relationship="TaDaaTieDyeModel.fk_role" FromRole="Users" ToRole="Role_Lookup" />
+        </EntityType>
+        <Association Name="fk_cart_user">
+          <End Role="Users" Type="TaDaaTieDyeModel.Users" Multiplicity="1" />
+          <End Role="Cart" Type="TaDaaTieDyeModel.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cloth_cat">
+          <End Role="Catagory_Lookup" Type="TaDaaTieDyeModel.Catagory_Lookup" Multiplicity="1" />
+          <End Role="Clothing" Type="TaDaaTieDyeModel.Clothing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catagory_Lookup">
+              <PropertyRef Name="CatId" />
+            </Principal>
+            <Dependent Role="Clothing">
+              <PropertyRef Name="Catagory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cloth_size">
+          <End Role="Size_Lookup" Type="TaDaaTieDyeModel.Size_Lookup" Multiplicity="1" />
+          <End Role="Clothing" Type="TaDaaTieDyeModel.Clothing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size_Lookup">
+              <PropertyRef Name="SizeId" />
+            </Principal>
+            <Dependent Role="Clothing">
+              <PropertyRef Name="Size" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sleeves">
+          <End Role="Sleeve_Lookup" Type="TaDaaTieDyeModel.Sleeve_Lookup" Multiplicity="1" />
+          <End Role="Clothing" Type="TaDaaTieDyeModel.Clothing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sleeve_Lookup">
+              <PropertyRef Name="SleeveID" />
+            </Principal>
+            <Dependent Role="Clothing">
+              <PropertyRef Name="SleeveLength" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_role">
+          <End Role="Role_Lookup" Type="TaDaaTieDyeModel.Role_Lookup" Multiplicity="1" />
+          <End Role="Users" Type="TaDaaTieDyeModel.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role_Lookup">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Download">
+          <Key>
+            <PropertyRef Name="FileNameID" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Type="String" Name="FileNameID" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Downloads" />
+          <Property Type="String" Name="Date" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TaDaaTieDyeModelStoreContainer" CdmEntityContainer="TaDaaTieDyeTPCEntities">
+          <EntitySetMapping Name="Cart">
+            <EntityTypeMapping TypeName="TaDaaTieDyeModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Catagory_Lookup">
+            <EntityTypeMapping TypeName="TaDaaTieDyeModel.Catagory_Lookup">
+              <MappingFragment StoreEntitySet="Catagory_Lookup">
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clothing">
+            <EntityTypeMapping TypeName="TaDaaTieDyeModel.Clothing">
+              <MappingFragment StoreEntitySet="Clothing">
+                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+                <ScalarProperty Name="ProdPicture" ColumnName="ProdPicture" />
+                <ScalarProperty Name="ProdPrice" ColumnName="ProdPrice" />
+                <ScalarProperty Name="ProdQty" ColumnName="ProdQty" />
+                <ScalarProperty Name="Catagory" ColumnName="Catagory" />
+                <ScalarProperty Name="BackPicture" ColumnName="BackPicture" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="SleeveLength" ColumnName="SleeveLength" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magnets">
+            <EntityTypeMapping TypeName="TaDaaTieDyeModel.Magnets">
+              <MappingFragment StoreEntitySet="Magnets">
+                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+                <ScalarProperty Name="ProdPicture" ColumnName="ProdPicture" />
+                <ScalarProperty Name="ProdPrice" ColumnName="ProdPrice" />
+                <ScalarProperty Name="ProdQty" ColumnName="ProdQty" />
+                <ScalarProperty Name="Catagory" ColumnName="Catagory" />
+                <ScalarProperty Name="ProdName" ColumnName="ProdName" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Statehood" ColumnName="Statehood" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role_Lookup">
+            <EntityTypeMapping TypeName="TaDaaTieDyeModel.Role_Lookup">
+              <MappingFragment StoreEntitySet="Role_Lookup">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Size_Lookup">
+            <EntityTypeMapping TypeName="TaDaaTieDyeModel.Size_Lookup">
+              <MappingFragment StoreEntitySet="Size_Lookup">
+                <ScalarProperty Name="SizeId" ColumnName="SizeId" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sleeve_Lookup">
+            <EntityTypeMapping TypeName="TaDaaTieDyeModel.Sleeve_Lookup">
+              <MappingFragment StoreEntitySet="Sleeve_Lookup">
+                <ScalarProperty Name="SleeveID" ColumnName="SleeveID" />
+                <ScalarProperty Name="Sleeve_Length" ColumnName="Sleeve Length" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TaDaaTieDyeModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Downloads">
+            <EntityTypeMapping TypeName="TaDaaTieDyeModel.Download">
+              <MappingFragment StoreEntitySet="Downloads">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Downloads" ColumnName="Downloads" />
+                <ScalarProperty Name="FileNameID" ColumnName="FileNameID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

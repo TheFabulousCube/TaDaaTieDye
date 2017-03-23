@@ -1,0 +1,36 @@
+﻿@model MySite.Models.Cart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Cart</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Users.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Users.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProdID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProdID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Qty)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Qty)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

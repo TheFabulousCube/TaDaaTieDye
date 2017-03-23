@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MySite.Models.Clothing>
+
+@{
+    ViewBag.Title = "Clothing by Type";
+}
+
+<h2>Tie Dyed Stuff! by Type</h2>
+
+<p>
+   @Html.Partial("_PageNavPartial")
+</p>
+    <div class="DropDownFilter">
+@using (Html.BeginForm("Type","Clothing", FormMethod.Get))
+{
+
+    
+        <text>  Type:</text>@Html.DropDownList("catagory", new SelectList(ViewBag.catagoryQuery, "CatId", "Type"), "Show All", new { onchange = "this.form.submit();" });
+           
+}
+    </div>
+
+<div class ="flexcontainer">
+@foreach (var item in Model) {
+    <ul class="flexsingle"> 
+        <li>@Html.DisplayFor(modelItem => item.ProdId)</li>
+        <li>@Html.DisplayFor(modelItem => item.Catagory_Lookup.Type)</li>  
+        <li>@Html.DisplayFor(modelItem => item.Size_Lookup.Size)</li>
+        <li><img src="@item.ProdPicture" alt="@item.Catagory_Lookup.Type" style="max-width: 75px; height: auto;" /></li>
+
+        <li>@Html.DisplayFor(modelItem => item.ProdPrice)</li>
+        <li>@Html.ActionLink("Add To Cart", "AddToCart", "Cart", new { id=item.ProdId, qty=1, returnUrl="~/Clothing/Type/"}, null) </li>
+
+            @Html.ActionLink("Details", "Details", new { id=item.ProdId, returnUrl="Type/" })
+    </ul>    
+}
+</div>
+
+
+
+
+
+
+

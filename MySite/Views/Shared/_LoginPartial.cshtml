@@ -1,0 +1,20 @@
+﻿
+    <div style="display: inline; float: right;">
+
+    @if (Request.IsAuthenticated) {
+    <text>
+        Hello, @Html.ActionLink(User.Identity.Name, "Manage", "User", routeValues: null, htmlAttributes: new { @title = "Manage" })!
+        @Html.ActionLink("View Cart", "ShowCart", "Cart", routeValues: new { User.Identity.Name, returnUrl = "~"+Request.FilePath} , htmlAttributes: new { @class = "styled_button", id = "registerLink" })
+        @using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a class = "styled_button" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            
+        }
+    </text>
+} else {
+    <ul>
+        <li>@Html.ActionLink("Register", "Create", "User", routeValues: new { User.Identity.Name, returnUrl = Request.Url.ToString()} , htmlAttributes: new { @class = "styled_button", id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "User", routeValues: new { returnUrl = Request.Url.ToString() }, htmlAttributes: new { @class = "styled_button", id = "loginLink" })</li>
+    </ul>
+}
+        </div>
