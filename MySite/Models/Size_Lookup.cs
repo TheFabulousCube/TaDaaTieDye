@@ -9,9 +9,8 @@
 
 namespace MySite.Models
 {
-    using System;
     using System.Collections.Generic;
-    
+
     public partial class Size_Lookup
     {
         public Size_Lookup()

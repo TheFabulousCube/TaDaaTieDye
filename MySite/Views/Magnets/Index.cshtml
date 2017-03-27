@@ -11,18 +11,21 @@
 </p>
 
 <div class ="flexcontainer">
-@foreach (var item in Model) {
-    <ul class="flexsingle"> 
-        <li>@Html.DisplayFor(modelItem => item.ProdName)</li>
-        <li>@Html.DisplayFor(modelItem => item.ProdId)</li>  
-        <li><img src="@item.ProdPicture" alt="@item.ProdName" style="max-width: 75px; height: auto;" /></li>
+@foreach (var item in Model)
+{
+    using (Html.BeginForm("AddToCart", "Cart", new { id = item.ProdId}, FormMethod.Post)) 
+    {
+        <ul class="flexsingle"> 
+            <li>@Html.DisplayFor(modelItem => item.ProdName)</li>
+            <li>@Html.DisplayFor(modelItem => item.ProdId)</li>  
+            <li><img src="@item.ProdPicture" alt="@item.ProdName" style="max-width: 75px; height: auto;" /></li>
 
-        <li>@Html.DisplayFor(modelItem => item.ProdPrice)</li>
-        <li>#Avail: @Html.DisplayFor(modelItem => item.ProdQty)</li>
-        <li>@Html.ActionLink("Add To Cart", "AddToCart", "Cart", new { id=item.ProdId, qty=1, returnUrl="~/Magnets/"}, null) </li>
-
-            @Html.ActionLink("Details", "Details", new { id=item.ProdId })
-    </ul>    
+            <li>@Html.DisplayFor(modelItem => item.ProdPrice)</li>
+            <li>#Avail: @Html.DisplayFor(modelItem => item.ProdQty)</li>
+            <li><input type="submit" value="Add to cart" /></li>
+                @Html.ActionLink("Details", "Details", new { id=item.ProdId })
+        </ul>
+    }    
 }
 </div>
 

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using MySite.Helpers;
@@ -35,9 +30,9 @@ namespace MySite.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl, string HeadingMessage = "Login to your account:")
+        public ActionResult Login( string HeadingMessage = "Login to your account:")
         {
-            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = Request.UrlReferrer;
             ViewBag.PageHeading = HeadingMessage;
             return View();
         }
@@ -45,22 +40,38 @@ namespace MySite.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Users user, string returnUrl)
+        public ActionResult Login(Users user)
         {
+            
             if (ModelState.IsValid)
             {
                 if (user.IsValid(user.Username, user.Password))
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, user.RememberMe);
                     NewLogin = false;
-                    return RedirectToLocal(returnUrl);
+                    // check & add from session cart
+                    if (Session.Keys.Count > 1)
+                    {
+                        DBCart dbCart = new DBCart(user);
+                        int qty;
+                        foreach (string id in Session.Keys)
+                        {
+                            if (int.TryParse(Session[id].ToString(), out qty))
+                            {
+                                dbCart.AddToCart(id, qty);
+                            }
+                        }
+                        TempData["UserMessage"] = "Please check your cart to see if it's correct!";
+                        return RedirectToAction("ShowCart", "Cart");
+                    }
+                    return RedirectToLocal(Session["Sender"].ToString());
                 }
                 else
                 {
                     ModelState.AddModelError("", user.Password);
                 }
             }
-            return View(user);
+            return RedirectToLocal(HttpContext.Session["Sender"].ToString());
         }
 
         public ActionResult RedirectToLocal(string returnUrl)
@@ -81,7 +92,7 @@ namespace MySite.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToLocal(Session["Sender"].ToString());
         }
 
 

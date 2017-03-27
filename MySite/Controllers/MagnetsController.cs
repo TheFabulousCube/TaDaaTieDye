@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using MySite.Models;
 
@@ -39,6 +36,25 @@ namespace MySite.Controllers
             return View(magnets);
         }
 
+
+        public ActionResult BackToList()
+        {
+            return RedirectToLocal(Session["Sender"].ToString());
+        }
+
+        public ActionResult RedirectToLocal(string returnUrl)
+        {
+            TempData["UserMessage"] = TempData["UserMessage"];
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Magnets");
+            }
+
+        }
         //
         // GET: /Magnets/Create
 

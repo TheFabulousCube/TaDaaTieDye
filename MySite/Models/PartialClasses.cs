@@ -1,11 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
-using MySite.Models;
 
 namespace MySite.Models
 {

@@ -9,9 +9,8 @@
 
 namespace MySite.Models
 {
-    using System;
     using System.Collections.Generic;
-    
+
     public partial class Sleeve_Lookup
     {
         public Sleeve_Lookup()

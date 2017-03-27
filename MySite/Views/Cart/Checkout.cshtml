@@ -11,7 +11,7 @@
 
 
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myContainer", action = "https://www.sandbox.paypal.com/cgi-bin/webscr?sandbox=1&direct=0&returnurl=plesk.tadaatiedye.com/Cart/CheckoutComplete&cancelurl=plesk.tadaatiedye.com/Cart/CheckoutCancelled" }))
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myContainer", action = "https://www.sandbox.paypal.com/cgi-bin/webscr?sandbox=1&direct=0&returnurl=http://tadaatiedye.com/Cart/CheckoutComplete&cancelurl=http://tadaatiedye.com/Cart/CheckoutCancelled" }))
 {
     @Html.Hidden("cmd", "_cart")
     @Html.Hidden("upload", "1")

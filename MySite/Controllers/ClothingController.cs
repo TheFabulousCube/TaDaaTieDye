@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using MySql.Data;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
-using MySql.Data.Entity;
 using System.Linq;
-using MySql.Web;
 using System.Web.Mvc;
 using MySite.Models;
 
@@ -104,7 +99,7 @@ namespace MySite.Controllers
         public ActionResult Details(string id = null, string returnUrl = "~/Index", string catagory = null)
         {
 
-            ViewBag.sender = returnUrl;
+            ViewBag.sender = Session["Sender"];
             ViewBag.catagory = catagory;
             Clothing clothing = db.Clothing.Find(id);
             if (clothing == null)
@@ -112,6 +107,26 @@ namespace MySite.Controllers
                 return HttpNotFound();
             }
             return View(clothing);
+        }
+
+        public ActionResult BackToList()
+        {
+
+            return RedirectToLocal(Session["Sender"].ToString());
+        }
+        
+        public ActionResult RedirectToLocal(string returnUrl)
+        {
+            TempData["UserMessage"] = TempData["UserMessage"];
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Clothing");
+            }
+
         }
 
         //

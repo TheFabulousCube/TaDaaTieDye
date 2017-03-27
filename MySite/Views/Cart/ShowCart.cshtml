@@ -23,7 +23,7 @@
         @foreach (var item in Model)
         {
             <tr class="line_item">
-@using (Html.BeginForm("Update", "Cart", FormMethod.Post))
+@using (Html.BeginForm())
 {
                 <td>
                     @Html.DisplayFor(modelItem => item.ItemId)
@@ -44,13 +44,14 @@
                     
                     <input type="hidden" name="ItemId" value="@item.ItemId" />
                     <input type="hidden" name="AvailQty" value="@item.AvailQty" />
-                    <input type="submit" name="Update" value="Update" />
+                    <input type="submit" name="action" formaction="/Cart/Update" value="Update" />
 
                 </td>
                 
                 <td>
-
-                    <input type="submit" name="removethis" formaction="/Cart/Remove/@item.ItemId" value="Remove" />
+                    
+                    <!-- <input type="submit" name="action"  value="Remove" /> -->
+                    <input type="submit" name="removethis" formaction="/Cart/Remove/@item.ItemId" value="Remove" /> 
 
                 </td>
                 
@@ -61,7 +62,8 @@
         }
 </table>
 
-@ViewBag.Total;
-@Html.ActionLink("Continue Shopping", (string) ViewBag.returnUrl)
+@ViewBag.Total
+<br />
+@Html.ActionLink("Continue Shopping", "ContinueShopping")
 @Html.ActionLink("Check out", "Checkout","Cart",  Model, null)
 

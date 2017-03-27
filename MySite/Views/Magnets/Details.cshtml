@@ -51,6 +51,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Add to cart", "addToCart", "Cart", new { id=Model.ProdId, qty = 1, returnUrl = "~/Magnets/Details/" + Model.ProdId }, null) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Add to cart", "addToCart", "Cart", new { id=Model.ProdId, qty = 1 }, null) |
+    @Html.ActionLink("Back to List", "BackToList")
 </p>

@@ -9,9 +9,8 @@
 
 namespace MySite.Models
 {
-    using System;
     using System.Collections.Generic;
-    
+
     public partial class Role_Lookup
     {
         public Role_Lookup()
